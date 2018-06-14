@@ -1,0 +1,12 @@
+5.78
+5.98
+5.83
+5.90
+Command terminated by signal 2
+27.04
+11.94
+11.89
+Command exited with non-zero status 127
+0.00
+Command exited with non-zero status 127
+0.00

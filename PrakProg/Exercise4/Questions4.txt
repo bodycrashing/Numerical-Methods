@@ -1,0 +1,80 @@
+1. How are arguments passed to functions in C: by-value or by-reference? And what does that mean?
+    I C modtager funktioner "by value", hvilket betyder at funktionen modtager en fuld kopi af den pågældende variabel. Dette betyder dermed at en funktion i C ikke kan ændre selve den oprindelige variabel.
+    Ønkser man at ens funktion skal ændre en variabel skal man derfor i stedet give funktionen adressen i hukommelsen hvor variablen ligger også kaldet en såkaldt pointer.
+    Funktionen vil da igen modtage en kopi (denne gang af pointeren), men da pointeren forsat peger til samme sted i hukkommelsen vil man kunne ændre værdien af den egentlige varaibel.
+
+2. If double x=1.23, what is *(&x)? What is NULL?
+    "&" symbolet repræsenterer "pointeren" til stedet i hukommelsen hvor variablen x er lageret. "*" symbolet dereferencer den pågældende variabel hvorved man tilgår værdien af selve variablen. Altså er *(&x)=1.23.
+    En NULL-pointer er en pointer som peger på peger på void*. Man vil derfor få en "segmentation fault" hvis man forsøger at dereference en NULL-pointer.
+
+  3. What happens to variables declared inside a function when the function exits (returns)?
+    De bliver slettet?
+
+  4. What is a static variable?
+    En statisk variabel har levetid som strækker sig over hele programmets run-time. Dette betyder ikke nødvendigvis at scopet af variablen er global, men at den er tilgængelig til alle tider under kørslen af programmet.
+
+  5. What will the following three programs print out and why?
+    #include<stdio.h>
+    void f(int i){i=0;}
+    int main(){
+    	int i=1; f(i); printf("i=%i\n",i);
+    	return 0; }
+    Dette program vil udskrive:
+      i=1
+    da funktionen kun modtager en kopi af i og ikke selv. Det er altså udelukkende kopien af i som bliver sat lig 0 og ikke i selv.
+
+  #include<stdio.h>
+  void f(int* i){*i=0;}
+  int main(){
+  	int i=1; f(&i); printf("i=%i\n",i);
+  	return 0; }
+  Da vi her giver funktionen pointeren til "i" og funktioen sætter *i=0 vil programmet nødvendigvis udskrive:
+    i=0
+
+
+  #include<stdio.h>
+  void f(int* i){i=NULL;}
+  int main(){
+  	int i=1; f(&i); printf("i=%i\n",i);
+  	return 0; }
+  Dette sidste eksempel er interessant idet man her sætter variablen "i's" pointer til er være lig NULL, altså &i=NULL. Dette betyder derfor også at programmet fortsat vil udskrive:
+    i=1
+  Grunden til man her ikke får en "segmentation fault" under "printf"-delen af programmet er at man kun ændre den kopi af pointeren &i til "i" og ikke sleve pointeren til "i".
+
+6. If you pass an array to a function with the signature void f(double a[]) – what is actually passed to the function:
+  i. the copy of the array?
+  ii. the pointer to the first element?
+  iii. the copy of the pointer to the first element?
+  iv. something else?
+
+  Svaret her er iii. funktionen får en kopi af pointeren til det første element i array'et.
+
+7. When the function with the signature void f(double a[]) gets the array as parameter – can it figure out the size of the array?
+  Nej det kan den ikke netop fordi (se svaret til spørgsmål 6.) funktionen bliver givet en kopi af pointeren til første element i array'et. Funktioen har derfor intet kendskab til den oprindelige størrelse af array'et.
+
+8. If you declare an array as int a[5]; and then try a[7]=1; what will happen?
+  Man vil få en "segmentation fault" da man forsøger at skrive til en del af hokummelsen, som programmet ikke har fået allokeret.
+
+9. If you declare a i) static, ii) variable-length, iii) dynamic array inside a function, can the function return it?
+  Man kan vil returne hvad, der passer en?
+
+10. What will the following C-program print?
+
+  #include<stdio.h>
+  int i=2; /* file scope */
+  void f(){printf("i=%i\n",i);}
+  int main(){
+  	int i=1; /* function scope */
+  	{
+  		int i=0; /* block scope */
+  		printf("i=%i\n",i);
+  	}
+  	printf("i=%i\n",i);
+  	f();
+  	return 0; }
+
+    Programmet vil udskrive:
+      i=0
+      i=1
+      i=2
+    se eventuelt C-fil scope.c.

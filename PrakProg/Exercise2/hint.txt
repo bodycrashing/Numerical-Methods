@@ -1,0 +1,15 @@
+-------------------------
+while(cond)body;
+
+for(;cond;){body;}
+-------------------------
+for(init;cond;inc)body;
+
+init;
+while(cond){body;inc;}
+------------------------
+do body while(cond)
+
+body;
+for(;cond;)body;
+------------------------

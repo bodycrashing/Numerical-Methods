@@ -1,0 +1,6 @@
+set term svg enhanced background rgb 'white'
+set out "integ.svg"
+set xlabel "alpha"
+set ylabel "{/Symbol a}"
+set key top
+plot "integ.out.txt" using 1:2 with lines title "E({/Symbol a})"
