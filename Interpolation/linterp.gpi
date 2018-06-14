@@ -1,0 +1,17 @@
+set term svg background rgb "white"  fsize 16
+set out "linterp.svg"
+
+set grid
+set tics out
+set key out below font ", 12"
+
+set xlabel "x"
+set ylabel "y"
+set title "Linear Interpolation"
+
+
+plot[][] "data.out.txt" index 0 using "x":"y" with points title "data i.e. cos(x)"\
+		,"data.out.txt" index 1 using "z":"spline" with lines title "spline z"\
+		,"data.out.txt" index 1 using "z":"int_spline" with lines title "spline integral z"\
+		,"data.out.txt" index 1 using "z":"cos(z)" with lines\
+			title "sin(z)"

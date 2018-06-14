@@ -1,0 +1,13 @@
+\
+set term svg background rgb "white"; \
+set out "times.svg"; \
+set xlabel "matrix size"; \
+set ylabel "diagonalization time, sec"; \
+set title "diagonalization time as function of matrix size (`uname -m`)"; \
+set key left; \
+f(x)=b+(x/a)**c; \
+b=0; a=100; c=3;\
+fit f(x) "out.times.txt" via a,c; \
+T = sprintf("fit: (n/%3.0f)^{%3.1f}",a,c); \
+plot "out.times.txt" title "measurement", f(x) title T; \
+

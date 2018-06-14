@@ -1,0 +1,36 @@
+
+
+*******************************************************************************
+Mon May  7 14:00:16 2018
+
+
+FIT:    data read from "out.times.txt"
+        format = z
+        #datapoints = 4
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=b+(x/a)**c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             c            
+   0 1.4015904156e+01   0.00e+00  4.63e+00    1.000000e+02   3.000000e+00
+   7 7.3639810617e-05  -9.49e-05  4.63e-03    2.100012e+02   3.096350e+00
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 7.36398e-05
+rel. change during last iteration : -9.48819e-10
+
+degrees of freedom    (FIT_NDF)                        : 2
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00606794
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.68199e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 210.001          +/- 4.166        (1.984%)
+c               = 3.09635          +/- 0.1326       (4.281%)
+
+correlation matrix of the fit parameters:
+                a      c      
+a               1.000 
+c              -0.973  1.000 

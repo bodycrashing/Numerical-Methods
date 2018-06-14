@@ -1,0 +1,63 @@
+
+QR decomposition:
+Random matrix A:
+  0.840  0.394  0.783
+  0.798  0.912  0.198
+  0.335  0.768  0.278
+  0.554  0.477  0.629
+
+ Matrix Q:
+  0.633 -0.578  0.156
+  0.601  0.314 -0.712
+  0.252  0.752  0.439
+  0.417 -0.031  0.525
+
+ Matrix R:
+  1.328  1.191  0.947
+  0.000  0.621 -0.201
+  0.000  0.000  0.433
+
+Checking that Q is in fact an orthogonal matrix by computing the product Q^T*Q (should be 1):
+  1.000  0.000  0.000
+  0.000  1.000  0.000
+  0.000  0.000  1.000
+Cheching the matrix product QR = A:
+  0.840  0.394  0.783
+  0.798  0.912  0.198
+  0.335  0.768  0.278
+  0.554  0.477  0.629
+
+Linear System: 
+Square random matrix A:
+  0.365  0.513  0.952
+  0.916  0.636  0.717
+  0.142  0.607  0.016
+A random right-hand side b (Ax=b):
+  0.243
+  0.137
+  0.804
+
+Solution x using QR-decomp.:
+ -0.647
+  1.484
+ -0.297
+
+Ax, should be equal b:
+  0.243
+  0.137
+  0.804
+
+ Inverse matrix A^{-1}:
+ -1.275  1.709 -0.711
+  0.260 -0.387  1.833
+  1.399 -0.446 -0.716
+
+ Matrix AA^-1, should be 1:
+  1.000 -0.000 -0.000
+  0.000  1.000  0.000
+ -0.000 -0.000  1.000
+
+ Matrix AA^-1, should be 1:
+  1.000 -0.000  0.000
+  0.000  1.000  0.000
+  0.000 -0.000  1.000

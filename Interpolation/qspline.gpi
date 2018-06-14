@@ -1,0 +1,16 @@
+set term svg background rgb "white"  fsize 16
+set out "qspline.svg"
+
+set grid
+set tics out
+set key out below font ", 12"
+
+set xlabel "x"
+set ylabel "y"
+set title "Quadratic Interpolation"
+
+
+plot[][] "data.out.txt" index 0 using "x":"y" with points title "data i.e. cos(x)"\
+		,"data.out.txt" index 2 using "z":"qspline" with lines title "qspline z"\
+		,"data.out.txt" index 2 using "z":"qspline_int" with lines title "qspline integral"\
+		,"data.out.txt" index 2 using "z":"qspline_deriv" with lines title "qspline derivative"\

@@ -1,0 +1,14 @@
+set term 'svg' background 'white'
+set out 'time_compare.svg'
+set xlabel 'Matrix size n [n x n]'
+set ylabel 'Time [s]'
+set key bottom right
+set title 'Computation time O(n³)'
+
+set fit quiet
+f(x)=b+(x/a)**3; \
+b=0.1; a=10; \
+fit f(x) "dataA" via b,a; \
+T = sprintf("fit: %4.1f+(n/%3.0f)^3",b,a); \
+
+plot 'dataA' title "measurement", f(x) title T; \
