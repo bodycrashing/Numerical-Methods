@@ -1,7 +1,76 @@
-Root finding:
-extremum of the Rosenbrock's function:
-initial vector x:         -2          8 
-            f(x):       3194        800 
-ncalls = 3438
-      solution x:          1          1 
-            f(x):  1.461e-06 -1.058e-06 
+------ Part A: Back-tracking linesearch and numerical Jacobian ------
+
+------------ Roots of System of Equations ------------
+Starting points: x=0.0001  y=1 
+The computed roots are:
+  0.000  9.106
+Determined in  22 iterations
+
+------------ Minimum of Rosenbrock's Valley Function ------------
+Starting points: x=2  y=2 
+The computed roots are:
+  1.000  1.000
+Determined in  10 iterations
+
+------------ Minimum of Himmelblaus's Function ------------
+Starting points: x=4  y=4 
+The computed roots are:
+  3.000  2.000
+Determined in  12 iterations
+
+
+
+------ Part B: Newton's method with analytic Jacobian ------
+
+------------ System of Equations using Analytic Jacobian ------------
+Starting points: x=0.0001  y=1 
+The computed roots are:
+  0.000  8.582
+Number of iterations analytical Jacobian: 16
+Number of iterations numerical Jacobian: 22
+
+Starting points: x=2  y=2 
+The computed roots are:
+  1.000  1.000
+Number of iterations analytical Jacobian: 10
+Number of iterations numerical Jacobian: 10
+
+Starting points: x=4  y=4 
+The computed roots are:
+  3.000  2.000
+Number of iterations analytical Jacobian: 12
+Number of iterations numerical Jacobian: 12
+
+System of Equations using GSL routine:
+  0.000  9.098
+in 21 iterations
+Rosenbrock's Valley Function using GSL routine:
+  1.000  1.000
+in 5 iterations
+Himmelblauss UFunction using GSL routine:
+  3.000  2.000
+in 1 iterations
+
+
+------ Part C: Newton's method with refined linesearch ------
+
+Starting points: x=0.0001  y=1 
+The computed roots are:
+  0.000  8.582
+Number of iterations analytical Jacobian: 16
+Number of iterations numerical Jacobian: 16
+
+Minimum of Rosenbrock function with analytical jacobial given the starting points
+  2.000  2.000
+The computed roots are:
+  1.000  1.000
+Number of iterations analytical Jacobian: 10
+Number of iterations numerical Jacobian: 10
+
+Minimum of Himmalblau function with analytical jacobial given the starting points
+  4.000  4.000
+The computed roots are:
+  3.000  2.000
+Number of iterations analytical Jacobian: 12
+Number of iterations numerical Jacobian: 12
+

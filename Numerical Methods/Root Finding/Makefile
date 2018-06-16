@@ -1,17 +1,20 @@
-CFLAGS += -Wall -std=c11 `gsl-config --cflags`
-LDLIBS += `gsl-config --libs`
-OBJ = main.o newton.o qr_gs_decomp.o
+CFLAGS += $$(gsl-config --cflags) -std=gnu1x -Wall
+LDLIBS += $$(gsl-config --libs)
+obj = newton.o qr_gs_decomp.o root.h
 
-all:out.txt
+.PHONEY: test all clean
+
+all: out.txt
 	cat $<
 
 out.txt: main
 	./$< > $@
 
-main: $(OBJ)
-
-$(OBJ): qr.h
+main: $(obj)
 
 clean:
-	rm -f main *.o out*
-q
+	$(RM) *.o main *.txt
+
+test:
+	@echo $(LDLIBS)
+	@echo $(CFLAGS)
