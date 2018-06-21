@@ -17,7 +17,6 @@ void vector_print(gsl_vector *v){
 
 
 
-
 int main(int argc, char** argv)
 {
 int n = atoi(argv[1]);
