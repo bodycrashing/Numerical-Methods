@@ -7,17 +7,32 @@
 #include "least_squares.h"
 #include "jacobi.h"
 
+
+#define FMT "%7.3f"
+void printv(gsl_vector *A){
+	for(int i=0;i<A->size;i++){
+		printf(FMT,gsl_vector_get(A,i));
+		printf("\n");
+	}
+}
+
+
+
+
+
 void lsfit(int m, double f(int i,double x),
 	gsl_vector* x, gsl_vector* y, gsl_vector* dy,
 	gsl_vector* c, gsl_matrix* S)
 {
-int n = (*x).size;
+int n = x->size;
 
 gsl_matrix *A    = gsl_matrix_alloc(n,m);
 gsl_vector *b    = gsl_vector_alloc(n);
 gsl_matrix *R    = gsl_matrix_alloc(m,m);
 gsl_matrix *invR = gsl_matrix_alloc(m,m);
 gsl_matrix *I    = gsl_matrix_alloc(m,m);
+
+
 
 for(int i=0;i<n;i++){
 	double xi  = gsl_vector_get(x,i);
@@ -30,6 +45,7 @@ for(int i=0;i<n;i++){
 qr_gs_decomp(A,R);
 qr_gs_solve(A,R,b,c);
 
+
 gsl_matrix_set_identity(I);
 qr_gs_inverse(I,R,invR);
 gsl_blas_dgemm(CblasNoTrans,CblasTrans,1,invR,invR,0,S);
@@ -40,22 +56,24 @@ gsl_matrix_free(R);
 gsl_matrix_free(invR);
 gsl_matrix_free(I);
 }
-/*
-void singular_val_decomp(gsl_matrix_set* A, gsl_matrix* V, gsl_vector* b, gsl_vector* c){
-	int n = (*A).size1;
+
+gsl_matrix* singular_val_decomp(gsl_matrix* A, gsl_matrix* V, gsl_matrix* S){
+	int n = (*A).size1; //A is tall matrix i.e. n>m.
 	int m = (*A).size2;
-	//gsl_matrix* V = gsl_matrix_alloc(n,n); // The matrix used to store the eigenvectors
-	gsl_vector* e = gsl_vector_alloc(n); // A vector used to store corresponding eigenvalues
-	gsl_matrix*	D = gsl_matrix_alloc(n,n); // The diagonal matrix D = VTAV
-	gsl_matrix* S = gsl_matrix_alloc(n,n);
+	gsl_matrix* ATA = gsl_matrix_alloc(m,m);
+	gsl_matrix*	D = gsl_matrix_alloc(m,m); // The diagonal matrix D = VTAV
+	//gsl_matrix* S = gsl_matrix_alloc(m,m);
 	gsl_matrix* U = gsl_matrix_alloc(n,m);
+	gsl_vector* e = gsl_vector_alloc(n); // A vector used to store corresponding eigenvalues
 	int num_rot = 0;
-	jacobi(gsl_matrix* A, gsl_vector* e, gsl_matrix* V, int* num_rot)
 
-	gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,V,A,0,VTAV);
+	gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,A,A,0,ATA);
+	jacobi(ATA, e, V, &num_rot);
 
-	for (int i = 0; i < (*VTAV).size1; i++) { //Takes the square-root of all diagonal entries of matrix D--> D^1/2 = S
-		double D_ii = sqrt(gsl_matrix_get(VTAV,i,i));
+	gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,V,ATA,0,D);
+	gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,D,V,0,D);
+	for (int i = 0; i < (*D).size1; i++) { //Takes the square-root of all diagonal entries of matrix D--> D^1/2 = S
+		double D_ii = sqrt(gsl_matrix_get(D,i,i));
 		gsl_matrix_set(S,i,i,D_ii);
 		gsl_matrix_set(D,i,i,1/D_ii);
 	}
@@ -63,6 +81,12 @@ void singular_val_decomp(gsl_matrix_set* A, gsl_matrix* V, gsl_vector* b, gsl_ve
 // We wish to compute the matrix U=AVD^-1/2. This is done by employing the BLAS-function "gsl_blas_dgemm" twice
 gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,A,V,0,U); // Computes the matrix product A*V--> U
 gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,U,D,0,U); // Computes the matrix product
-qr_gs_solve(U,S,b,c);
 
-}*/
+gsl_matrix_free(ATA);
+gsl_matrix_free(D);
+//gsl_matrix_free(S);
+//gsl_matrix_free(U);
+gsl_vector_free(e);
+
+return U;
+}

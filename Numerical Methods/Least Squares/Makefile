@@ -1,9 +1,9 @@
 CFLAGS += -Wall -O -std=gnu1x `gsl-config --cflags`
 LDLIBS += `gsl-config --libs`
-OBJ = main.o qr_gs_decomp.o least_squares.o
+OBJ = main.o qr_gs_decomp.o least_squares.o jacobi.o
 
 all: out.txt plot.svg
-	cat $<
+
 plot.svg: out.txt Makefile
 	echo '\
 	set term svg background rgb "white";\
