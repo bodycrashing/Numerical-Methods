@@ -1,10 +1,10 @@
-CFLAGS += -Wall -std=c11 `gsl-config --cflags`
-LDLIBS += `gsl-config --libs`
+CFLAGS += $$(gsl-config --cflags) -std=gnu1x -Wall
+LDLIBS += $$(gsl-config --libs)
+
 OBJ = main.o runge_kutta.o
 
 .PHONEY: all
 all: out.txt
-	cat $<
 
 out.txt: main
 	./$< > $@
