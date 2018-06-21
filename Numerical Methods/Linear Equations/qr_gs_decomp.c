@@ -83,10 +83,8 @@ void qivens_apply(gsl_matrix* QR, gsl_vector* v){
 }
 
 
-
 void givens_solve(gsl_matrix* QR, gsl_vector* b){
   qivens_apply(QR,b);
-  //for(int i=0;i<b->size;i++)gsl_vector_set(x,i,gsl_vector_get(v,i));
   int m=QR->size2;
   for(int i=m-1;i>=0;i--){
     double s=0;
@@ -95,7 +93,6 @@ void givens_solve(gsl_matrix* QR, gsl_vector* b){
     gsl_vector_set(b,i,(gsl_vector_get(b,i)-s)/gsl_matrix_get(QR,i,i));
   }
 }
-
 
 
 void givens_inverse(gsl_matrix *QR, gsl_matrix *B) {
