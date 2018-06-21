@@ -4,13 +4,13 @@
 Starting points: x=0.0001  y=1 
 The computed roots are:
   0.000  9.106
-Determined in  22 iterations
+Determined in  262 iterations
 
 ------------ Minimum of Rosenbrock's Valley Function ------------
 Starting points: x=2  y=2 
 The computed roots are:
   1.000  1.000
-Determined in  10 iterations
+Determined in  2115 iterations
 
 ------------ Minimum of Himmelblaus's Function ------------
 Starting points: x=4  y=4 
@@ -27,13 +27,13 @@ Starting points: x=0.0001  y=1
 The computed roots are:
   0.000  8.582
 Number of iterations analytical Jacobian: 16
-Number of iterations numerical Jacobian: 22
+Number of iterations numerical Jacobian: 262
 
 Starting points: x=2  y=2 
 The computed roots are:
   1.000  1.000
-Number of iterations analytical Jacobian: 10
-Number of iterations numerical Jacobian: 10
+Number of iterations analytical Jacobian: 2106
+Number of iterations numerical Jacobian: 2115
 
 Starting points: x=4  y=4 
 The computed roots are:
@@ -64,8 +64,8 @@ Minimum of Rosenbrock function with analytical jacobial given the starting point
   2.000  2.000
 The computed roots are:
   1.000  1.000
-Number of iterations analytical Jacobian: 10
-Number of iterations numerical Jacobian: 10
+Number of iterations analytical Jacobian: 2106
+Number of iterations numerical Jacobian: 2106
 
 Minimum of Himmalblau function with analytical jacobial given the starting points
   4.000  4.000
