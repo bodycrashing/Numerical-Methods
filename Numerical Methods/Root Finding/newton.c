@@ -37,7 +37,11 @@ int Newton(void f(gsl_vector* x, gsl_vector* fx), gsl_vector* x0, double dx, dou
 			gsl_vector_memcpy(z,x0);
 			gsl_vector_add(z,Dx); // Trying out full step
 			f(z,fz);
+<<<<<<< HEAD
 			if (gsl_blas_dnrm2(fz) < (1-lambda/2.0)*gsl_blas_dnrm2(fx) || lambda < 1.0/64.0) break;
+=======
+			if (gsl_blas_dnrm2(fz) < (1-lambda/2.0)*gsl_blas_dnrm2(fx) || lambda > 1.0/64.0) break;
+>>>>>>> 881c86d8c4bc3472f0396274d7f1cb1df2f5f285
 			lambda/=2.0;
 			gsl_vector_scale(Dx,0.5);
 		}
@@ -87,7 +91,11 @@ int Newton_Jacobian(void f(gsl_vector* x, gsl_vector* fx, gsl_matrix* J), gsl_ve
 			gsl_vector_memcpy(z,x0);
 			gsl_vector_add(z,Dx); // Trying out full step
 			f(z,fz,J);
+<<<<<<< HEAD
 			if (gsl_blas_dnrm2(fz) < (1-lambda/2.0)*gsl_blas_dnrm2(fx) || lambda < 1.0/64.0) break;
+=======
+			if (gsl_blas_dnrm2(fz) < (1-lambda/2.0)*gsl_blas_dnrm2(fx) || lambda > 1.0/64.0) break;
+>>>>>>> 881c86d8c4bc3472f0396274d7f1cb1df2f5f285
 			lambda/=2.0;
 			gsl_vector_scale(Dx,0.5);
 		}
@@ -147,7 +155,11 @@ int Newton_Refined(void f(gsl_vector* x, gsl_vector* fx, gsl_matrix* J), gsl_vec
 			gsl_vector_memcpy(z,x0);
 			gsl_vector_add(z,Dx); // Trying out full step
 			f(z,fz,J);
+<<<<<<< HEAD
 			if (gsl_blas_dnrm2(fz) < (1-lambda/2.0)*gsl_blas_dnrm2(fx) || lambda < 1.0/64.0) break;
+=======
+			if (gsl_blas_dnrm2(fz) < (1-lambda/2.0)*gsl_blas_dnrm2(fx) || lambda > 1.0/64.0) break;
+>>>>>>> 881c86d8c4bc3472f0396274d7f1cb1df2f5f285
 			double c = (glambda-g0-gprime0*lambda)/(lambda*lambda);
 			glambda = g0+gprime0*lambda+c*lambda*lambda;
 			lambda = gprime0/(2*c);
