@@ -7,11 +7,11 @@ set key out below font ", 12"
 
 set xlabel "x"
 set ylabel "y"
-set title "Linear Interpolation"
+set title "Linear Interpolation cos(x)"
 
 
-plot[][] "data.out.txt" index 0 using "x":"y" with points title "data i.e. cos(x)"\
-		,"data.out.txt" index 1 using "z":"spline" with lines title "spline z"\
-		,"data.out.txt" index 1 using "z":"int_spline" with lines title "spline integral z"\
+plot[][] "data.out.txt" index 0 using "x":"y" with points title "Sample points"\
+		,"data.out.txt" index 1 using "z":"spline" with lines title "lspline"\
+		,"data.out.txt" index 1 using "z":"int_spline" with lines title "lspline integral"\
 		,"data.out.txt" index 1 using "z":"cos(z)" with lines\
-			title "sin(z)"
+			title "cos(x)"

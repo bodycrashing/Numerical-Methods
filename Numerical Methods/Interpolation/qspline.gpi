@@ -7,10 +7,10 @@ set key out below font ", 12"
 
 set xlabel "x"
 set ylabel "y"
-set title "Quadratic Interpolation"
+set title "Quadratic Interpolation cos(x)"
 
 
-plot[][] "data.out.txt" index 0 using "x":"y" with points title "data i.e. cos(x)"\
-		,"data.out.txt" index 2 using "z":"qspline" with lines title "qspline z"\
+plot[][] "data.out.txt" index 0 using "x":"y" with points title "Sample points"\
+		,"data.out.txt" index 2 using "z":"qspline" with lines title "qspline"\
 		,"data.out.txt" index 2 using "z":"qspline_int" with lines title "qspline integral"\
 		,"data.out.txt" index 2 using "z":"qspline_deriv" with lines title "qspline derivative"\

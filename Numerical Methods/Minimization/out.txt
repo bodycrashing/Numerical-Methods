@@ -1,0 +1,38 @@
+
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+Minimisation for Rosenbrock's Function (1-x)^2+100(y-x^2)^2:
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+Initial guess x0:
+  2.000  2.000
+
+ Number of steps = 27
+Computed roots of Rosenbrok's Valley Function:
+  1.000  1.000
+
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+Minimisation of Himmelblau's Function:
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+ Number of steps = 6
+Computed roots of Himmelblau's Function:
+ -3.779 -3.283
+eps=1.0e-06
+
+MINIMIZATION OF ROSENBROCK'S FUNCTION
+start point:
+steps=507
+  1.000  1.000
+steps=1007
+ -3.779 -3.283
+Fit to the given data with Broyden update and numerically calculated gradient given the start values
+  0.500  1.000  2.500
+is, with eps = 1e-06 and step size = 1e-06
+  3.557  1.232  3.205
+with 1002 steps 
+

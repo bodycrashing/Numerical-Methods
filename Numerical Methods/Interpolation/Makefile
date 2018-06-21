@@ -4,30 +4,23 @@ LDLIBS += $$(gsl-config --libs)
 PLOTTER = gnuplot
 OBJ = main.o linspace.o linterp.o qspline.o cspline.o
 
-.PHONEY:all clean lindisp qdisp
+.PHONEY:all clean
 
 all: linterp.svg qspline.svg cspline.svg data.out.txt
 
 linterp.svg: linterp.gpi data.out.txt
-		$(PLOTTER) $<
+	$(PLOTTER) $<
 
 qspline.svg: qspline.gpi data.out.txt
-		$(PLOTTER) $<
+	$(PLOTTER) $<
 
 cspline.svg: cspline.gpi data.out.txt
-		$(PLOTTER) $<
+	$(PLOTTER) $<
 
 data.out.txt: main
 	./$< > $@
 
 main: $(OBJ) interp.h
-
-
-lindisp:linterp.svg
-	display $< &
-
-qdisp:qspline.svg
-	display $< &
 
 clean:
 	find . -type f -executable -delete

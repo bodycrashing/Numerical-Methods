@@ -7,11 +7,10 @@ set key out below font ", 12"
 
 set xlabel "x"
 set ylabel "y"
-set title "Cubic Interpolation"
+set title "Cubic Interpolation cos(2x)*sin(x)"
 
 
-plot[][] "data.out.txt" index 0 using "x":"y" with points title "data i.e. cos(x)"\
-		,"data.out.txt" index 3 using "z":"cspline" with lines title "cspline z"\
+plot[][] "data.out.txt" index 3 using "z":"cspline" with lines title "cspline"\
     ,"data.out.txt" index 3 using "z":"cspline_int" with lines title "cspline integral"\
     ,"data.out.txt" index 3 using "z":"cspline_deriv" with lines title "cspline derivative"\
     ,"data.out.txt" index 4 using "z":"GSL_cspline" with lines title "GSL Cubic Spline"\

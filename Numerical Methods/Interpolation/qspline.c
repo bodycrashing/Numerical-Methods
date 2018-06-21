@@ -56,13 +56,11 @@ double qspline_eval(qspline *s, double z){
 }
 
 
-
 double qspline_integral(qspline *s, double z){  /* evaluates the integral of the prebuilt spline from x[0] to z */
 	assert(z >= s->x[0] && z <= s->x[s->n-1]);
 
 	int i;
 	double integral = 0;
-
 	for(i = 0; s->x[i+1] < z; i++){
 		double h = s->x[i+1] - s->x[i];
 		integral += s->y[i]*h + (1.0/2)*s->b[i]*(h*h)
@@ -74,6 +72,7 @@ double qspline_integral(qspline *s, double z){  /* evaluates the integral of the
 
 	return integral;
 }
+
 
 double qspline_deriv(qspline *s, double z){
 	assert(z>=s->x[0] && z<=s->x[s->n-1]);
@@ -94,5 +93,9 @@ double qspline_deriv(qspline *s, double z){
 
 
 void qspline_free(qspline *s){
-	free(s->x); free(s->y); free(s->b); free(s->c); free(s);
+	free(s->x);
+	free(s->y);
+	free(s->b);
+	free(s->c);
+	free(s);
 }
