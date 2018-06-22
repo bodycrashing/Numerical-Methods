@@ -327,12 +327,12 @@
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(323.4,471.9)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="middle">
-		<text><tspan font-family="Arial" >x</tspan></text>
+		<text><tspan font-family="Arial" >t</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(323.4,31.6)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="middle">
-		<text><tspan font-family="Arial" >Least Squares Fit Using QuasiNewton Minimization</tspan></text>
+		<text><tspan font-family="Arial" >Least Squares Fit Using Quasi-Newton Minimization</tspan></text>
 	</g>
 </g>
 	<g id="gnuplot_plot_1" ><title>data</title>
@@ -365,36 +365,7 @@
 	</g>
 	<g id="gnuplot_plot_2" ><title>fit</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(507.9,94.6)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >fit</tspan></text>
-	</g>
 </g>
-<g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0, 158, 115)'  d='M516.2,90.1 L558.4,90.1 M83.5,132.5 L85.9,136.6 L88.4,140.6 L90.8,144.6 L93.3,148.5 L95.8,152.3
-		L98.2,156.1 L100.7,159.9 L103.1,163.6 L105.6,167.2 L108.0,170.8 L110.5,174.3 L113.0,177.7 L115.4,181.2
-		L117.9,184.5 L120.3,187.8 L122.8,191.1 L125.3,194.3 L127.7,197.5 L130.2,200.6 L132.6,203.6 L135.1,206.7
-		L137.5,209.6 L140.0,212.6 L142.5,215.5 L144.9,218.3 L147.4,221.1 L149.8,223.9 L152.3,226.6 L154.7,229.2
-		L157.2,231.9 L159.7,234.5 L162.1,237.0 L164.6,239.5 L167.0,242.0 L169.5,244.5 L171.9,246.9 L174.4,249.2
-		L176.9,251.6 L179.3,253.9 L181.8,256.1 L184.2,258.4 L186.7,260.6 L189.1,262.7 L191.6,264.8 L194.1,266.9
-		L196.5,269.0 L199.0,271.0 L201.4,273.0 L203.9,275.0 L206.4,276.9 L208.8,278.9 L211.3,280.7 L213.7,282.6
-		L216.2,284.4 L218.6,286.2 L221.1,288.0 L223.6,289.7 L226.0,291.5 L228.5,293.2 L230.9,294.8 L233.4,296.5
-		L235.8,298.1 L238.3,299.7 L240.8,301.2 L243.2,302.8 L245.7,304.3 L248.1,305.8 L250.6,307.3 L253.0,308.7
-		L255.5,310.2 L258.0,311.6 L260.4,313.0 L262.9,314.3 L265.3,315.7 L267.8,317.0 L270.3,318.3 L272.7,319.6
-		L275.2,320.9 L277.6,322.1 L280.1,323.4 L282.5,324.6 L285.0,325.8 L287.5,326.9 L289.9,328.1 L292.4,329.2
-		L294.8,330.4 L297.3,331.5 L299.7,332.5 L302.2,333.6 L304.7,334.7 L307.1,335.7 L309.6,336.7 L312.0,337.7
-		L314.5,338.7 L316.9,339.7 L319.4,340.7 L321.9,341.6 L324.3,342.6 L326.8,343.5 L329.2,344.4 L331.7,345.3
-		L334.2,346.2 L336.6,347.0 L339.1,347.9 L341.5,348.7 L344.0,349.5 L346.4,350.4 L348.9,351.2 L351.4,352.0
-		L353.8,352.7 L356.3,353.5 L358.7,354.3 L361.2,355.0 L363.6,355.7 L366.1,356.5 L368.6,357.2 L371.0,357.9
-		L373.5,358.6 L375.9,359.2 L378.4,359.9 L380.8,360.6 L383.3,361.2 L385.8,361.8 L388.2,362.5 L390.7,363.1
-		L393.1,363.7 L395.6,364.3 L398.0,364.9 L400.5,365.5 L403.0,366.1 L405.4,366.6 L407.9,367.2 L410.3,367.7
-		L412.8,368.3 L415.3,368.8 L417.7,369.3 L420.2,369.8 L422.6,370.3 L425.1,370.8 L427.5,371.3 L430.0,371.8
-		L432.5,372.3 L434.9,372.8 L437.4,373.2 L439.8,373.7 L442.3,374.1 L444.7,374.6 L447.2,375.0 L449.7,375.4
-		L452.1,375.9 L454.6,376.3 L457.0,376.7 L459.5,377.1 L461.9,377.5 L464.4,377.9 L466.9,378.3 L469.3,378.7
-		L471.8,379.0 L474.2,379.4 L476.7,379.8 L479.2,380.1 L481.6,380.5 L484.1,380.8 L486.5,381.2 L489.0,381.5
-		L491.4,381.8 L493.9,382.2 L496.4,382.5 L498.8,382.8 L501.3,383.1 L503.7,383.4 L506.2,383.7 L508.6,384.0
-		L511.1,384.3 L513.6,384.6 L516.0,384.9 L518.5,385.2 L520.9,385.4 L523.4,385.7 L525.8,386.0 L528.3,386.2
-		L530.8,386.5 L533.2,386.8 L535.7,387.0 L538.1,387.3 L540.6,387.5 L543.1,387.7 L545.5,388.0 L548.0,388.2
-		L550.4,388.4 L552.9,388.7 L555.3,388.9 L557.8,389.1 L560.3,389.3 L562.7,389.5  '/></g>
 	</g>
 <g fill="none" color="#FFFFFF" stroke="rgb(  0, 158, 115)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>

@@ -1,10 +1,6 @@
 
-
----------------------------------------------------------------------
----------------------------------------------------------------------
-Minimisation for Rosenbrock's Function (1-x)^2+100(y-x^2)^2:
----------------------------------------------------------------------
----------------------------------------------------------------------
+|-------------- Part A: Newton's minimization method -------------------|
+Minimisation for Rosenbrock's Valley Function:
 Initial guess x0:
   2.000  2.000
 
@@ -13,26 +9,38 @@ Computed roots of Rosenbrok's Valley Function:
   1.000  1.000
 
 
----------------------------------------------------------------------
----------------------------------------------------------------------
 Minimisation of Himmelblau's Function:
----------------------------------------------------------------------
----------------------------------------------------------------------
 
  Number of steps = 6
 Computed roots of Himmelblau's Function:
  -3.779 -3.283
-eps=1.0e-06
 
-MINIMIZATION OF ROSENBROCK'S FUNCTION
-start point:
-steps=507
+
+|-------------- Part B: Quasi-Newton with Broyden's update -------------------|
+
+Quasi-Newton: Rosenbrok's Function
+Initial guess x0:
+  2.000  2.000
+Steps=507
+Roots:
   1.000  1.000
-steps=1007
+f(x_root) = 9.03163e-10
+
+Quasi-Newton: Himmelblau's Function
+Initial guess x0:
+ 18.000 15.000
+Steps=1007
+Roots:
  -3.779 -3.283
-Fit to the given data with Broyden update and numerically calculated gradient given the start values
-  0.500  1.000  2.500
-is, with eps = 1e-06 and step size = 1e-06
-  3.557  1.232  3.205
-with 1002 steps 
+f(x_root) = 8.11355e-08
+
+
+
+---- Expontial fit to supplied experimental data  ----
+Initial guess of fitting coefficients:
+A=0.5  B=1  T=2.5
+
+Estimate of fitting after Quasi-Newton Least Squares minimization:
+A=3.55701  B=1.23192  T=3.20545
+Steps=1002 
 

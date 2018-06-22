@@ -14,9 +14,9 @@ plot.svg: $(plot_obj)
 	set term $(subst .,,$(suffix $@)) background rgb "white"; \
 	set out "$@"; \
 	set grid; \
-	set xlabel "x"; \
+	set xlabel "t"; \
 	set ylabel "y"; \
-	set title "Least Squares Fit Using QuasiNewton Minimization"; \
+	set title "Least Squares Fit Using Quasi-Newton Minimization"; \
 	plot "$<" index 0 with errorbars title "data" \
 	,"$<" index 1 using 1:2 with lines title "fit" ; \
 	' | gnuplot
@@ -27,7 +27,6 @@ out.txt: main
 main: $(OBJ)
 
 $(OBJ): minimization.h
-
 
 clean:
 	$(RM) *.o main *.txt *.svg
