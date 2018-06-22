@@ -1,3 +1,20 @@
 
+|--------- Part A: Plain Monte Carlo integration: --------|
+Integration of 3D unit-sphere from 0 to 1:
+Error = 0.000163271
+Result: Q=0.999936
+Correct result: Q_exact=1
 
-Adaptive2D result=1.38246
+Integration of gamma function from 0 to Pi:
+Error = 0.00323107
+Result: Q=1.38756
+Correct result: Q_exact=1.39320392968568
+
+|------------ Part C: Adaptive 2D integrator --------------|
+2D integration of f(x,y)=sin(x)*cos(y) using functions:
+
+	c(x)=x^2  d(x)=sin(x)
+
+as curves limiting the integration area
+Result: Q=0.88346
+

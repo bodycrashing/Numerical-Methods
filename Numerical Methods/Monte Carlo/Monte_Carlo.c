@@ -1,8 +1,6 @@
 #include "Monte_Carlo.h"
 #define RND (double)rand()/RAND_MAX
 
-
-
 void randomx(int dim, gsl_vector* a, gsl_vector* b, gsl_vector* x){
   for (int i = 0; i < dim; i++) {
     double ai = gsl_vector_get(a,i);
@@ -40,12 +38,9 @@ void plain_monte(int dim, gsl_vector* a, gsl_vector* b, double f(gsl_vector* x),
 }
 
 
-
 double Adaptive2D(double f(double x, double y),double a, double b, double c(double x), double d(double x),
                             double acc, double eps, double *err){
-
 double a_new, b_new;
-
 double outer_int(double x){
 	double inner_int(double y){
 		return f(x,y);

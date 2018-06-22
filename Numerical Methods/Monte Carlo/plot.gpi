@@ -1,11 +1,11 @@
 set term svg size 800,600 background rgb "white"
 set out  "error.svg"
-set xlabel "N"
+set xlabel "Number of sampling points"
 set ylabel "Error"
-set key right top font ",12"
-set title  "Error of Plain Monte Carlo Integration on Func. x0*x0+x1*x1+x2*x2"
+set key right top font ",14"
+set title  "Error of Plain Monte Carlo Integration as Function of N"
 f(x)=b+(a/sqrt(x))
 b=0.1; a=10
 fit f(x) "data.txt" via b,a
-F = sprintf("fit: error=%4.1f+(%3.0f/sqrt(N))",b,a)
-plot "data.txt" using 1:2 with points  title "Data of Error vs. N",f(x) with lines title F \
+F = sprintf("fit: %4.1f+(%3.0f/sqrt(N))",b,a)
+plot "data.txt" using 1:2 with points  title "Error vs. N",f(x) with lines title F \
