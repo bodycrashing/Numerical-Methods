@@ -1,55 +1,60 @@
----------------------------------------------------------------------
-Adaptive Integration of various functions
----------------------------------------------------------------------
+|--------- Part A: Adaptive Integration of listed functions: --------|
+- f1(x)=sqrt(x)
+- f2(x)=1/sqrt(x)
+- f3(x)=ln(x)/sqrt(x)
+- f4(x)=4*sqrt(1-(1-x)^2)
+
+Integration of f1(x)=sqrt(x) from 0 to 1:
+Number of Calls = 108
+Error = 3.7384e-06
+Result: Q=0.666667
+Correct result: Q_exact=2/3
+
+Integration of f2(x)=1/sqrt(x) from 0 to 1:
+Number of Calls = 47064
+Error = 1.37719e-06
+Result: Q=2
+Correct result: Q_exact=2
+
+Integration of f3(x)=ln(x)/sqrt(x)from 0 to 1:
+Number of Calls = 97788
+Error = 4.43536e-07
+Result: Q=-4
+Correct result: Q_exact=-4
+
+Integration of f4(x)=4*sqrt(1-(1-x)^2) from 0 to 1:
+Number of Calls = 228
+Error = 8.4805e-07
+Result: Q=3.1415928363913225851
+Correct result: Q_exact=3.141592653589793116
 
 
-Integration of sqrt(x) from 0 to 1: 
- Q=6.666670e-01 
- Error=3.7384e-06
-Number of Calls =108
-Correct result = 2/3
+|-------------------- Part B:  Infinite limits ---------------------|
+Integration of f(x)=exp(-x) from 0 to INFINITY:
+Number of Calls = 332
+Error = 1.62347e-06
+Result: Q=1
+Correct result: Q_exact=1
+
+Integration of gauss-function f(x)=exp(-x^2) from -INFINITY to INFINITY:
+Number of Calls = 584
+Error = 5.56892e-10
+Result: Q=1.77245
+Correct result: Q_exact=1.77245 <--sqrt(Pi)
+
+Comparision with the GSL gsl_integration_qagi libary routine:
+f(x)=exp(-x^2) from -INFINITY to INFINITY:
+Number of Calls = 734
+Error = 4.31636e-06
+Result: QAGI=1.77245
 
 
-Integration of 1/sqrt(x) from 0 to 1: 
- Q=2.000000e+00 
- Error=1.37719e-06
-Number of Calls =47064
-Correct result = 2
+|----------- Part C: Clenshaw–Curtis variable transformation -----------|
+Integration of f2(x)=1/sqrt(x) from 0 to 1 using Clenshaw–Curtis transform:
+Number of Calls = 120
+Error = 6.44784e-07
+Result: Q=2
+Correct result: Q_exact=2
 
-
-Integration of ln(x)/sqrt(x) from 0 to 1: 
- Q=-4.000000e+00 
- Error=4.43536e-07
-Number of Calls =97788
-Correct result = -4
-
-
-Integration of 4*sqrt(1-(1-x)*(1-x)) from 0 to 1:
- Q= 3.141593e+00 
- Error=8.4805e-07
-Number of Calls =228
-Correct result = PI
-
-
-Integration of exp(-x) from 0 to Infinity:
- Q= 1.000000e+00 
- Error=1.62347e-06
-Number of Calls =332
-Correct result = 1
-
-
-Integration of 1/sqrt(pow(x,12)+5) from -Infinity to Infinity:
- Q=1.176505e+00 
- Error=8.40799e-07
-Number of Calls =688
-Correct result = 1.1765...
----------------------------------------------------------------------
-Adaptive Integration of various functions using Clenshaw-Curtis Method
----------------------------------------------------------------------
-
-
-Integration of 1/sqrt(x) from 0 to 1: 
- Q=2.000000e+00 
- Error=6.44784e-07
-Number of Calls =120
-Correct result = 2
+Hence we see a significant reduction in the number of function calls
+as compared to original adaptive integration approach

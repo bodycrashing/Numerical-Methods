@@ -1,5 +1,5 @@
-CFLAGS +=  -Wall -std=gnu1x
-LDLIBS += -lm
+CFLAGS += $$(gsl-config --cflags) -std=c99 -Wall
+LDLIBS += $$(gsl-config --libs)
 OBJ = main.o integration.o
 .PHONEY: all
 all: out.txt

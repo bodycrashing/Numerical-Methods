@@ -14,7 +14,6 @@ assert(nrec<1e+6);
 	*err = fabs(Q-q);
 
 	if(*err<tol)return Q;
-
 	else{
 		double Q1 = Adaptive24(f,a,(a+b)/2,acc/sqrt(2.),eps,f1,f2,nrec+1,err);
 		double Q2 = Adaptive24(f,(a+b)/2,b,acc/sqrt(2.),eps,f3,f4,nrec+1,err);
@@ -70,7 +69,7 @@ int b_test = isinf(b);
 
 	else {
 		int nrec = 0;
-		double f2 = f(a+2*(b-a)/6); //no rescalling needed 
+		double f2 = f(a+2*(b-a)/6); //no rescalling needed
 		double f3 = f(a+4*(b-a)/6);
 		return Adaptive24(f,a,b,acc,eps,f2,f3,nrec,err);
 	}

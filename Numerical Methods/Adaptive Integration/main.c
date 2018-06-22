@@ -2,131 +2,123 @@
 #include<stdlib.h>
 #include <math.h>
 #include "adaptive.h"
+#include<gsl/gsl_integration.h>
+
 int main(void){
+printf("|--------- Part A: Adaptive Integration of listed functions: --------|\n");
+printf("- f1(x)=sqrt(x)\n- f2(x)=1/sqrt(x)\n- f3(x)=ln(x)/sqrt(x)\n- f4(x)=4*sqrt(1-(1-x)^2)");
 
-printf("---------------------------------------------------------------------\n");
-printf("Adaptive Integration of various functions\n");
-printf("---------------------------------------------------------------------\n");
-
-int Numcalls = 0;
 double a = 0.;
 double b = 1.;
 double acc = 1e-5;
 double eps = 1e-5;
-double err = 0.;
 
-////////////////////////////////////////////////////////
+int Numcalls = 0;
+double err = 0.;
 double f_sqrt(double x){
   Numcalls++;
   return sqrt(x);
 }
-
 double Q = Adaptive_Infinity(f_sqrt,a,b,acc,eps,&err);
-
-printf("\n\nIntegration of sqrt(x) from 0 to 1: \n Q=%e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = 2/3\n");
-
-////////////////////////////////////////////////////////
+printf("\n\nIntegration of f1(x)=sqrt(x) from 0 to 1:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%lg\nCorrect result: Q_exact=2/3\n",Q);
 
 Numcalls = 0;
 err = 0;
-
 double f_invsqrt(double x){
   Numcalls++;
   return 1./sqrt(x);
 }
-
-Q = Adaptive_Infinity(f_invsqrt,a,b,acc,eps,&err);
-
-printf("\n\nIntegration of 1/sqrt(x) from 0 to 1: \n Q=%e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = 2\n");
+Q = Adaptive(f_invsqrt,a,b,acc,eps,&err);
+printf("\nIntegration of f2(x)=1/sqrt(x) from 0 to 1:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%lg\nCorrect result: Q_exact=2\n",Q);
 
 
-////////////////////////////////////////////////////////
 Numcalls = 0;
 err = 0;
-
 double f_lninvsqrt(double x){
   Numcalls++;
   return log(x)/sqrt(x);
 }
+Q = Adaptive(f_lninvsqrt,a,b,acc,eps,&err);
+printf("\nIntegration of f3(x)=ln(x)/sqrt(x)from 0 to 1:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%lg\nCorrect result: Q_exact=-4\n",Q);
 
-Q = Adaptive_Infinity(f_lninvsqrt,a,b,acc,eps,&err);
-
-printf("\n\nIntegration of ln(x)/sqrt(x) from 0 to 1: \n Q=%e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = -4\n");
-
-
-////////////////////////////////////////////////////////
 
 Numcalls = 0;
 err = 0;
-
-double f_mix(double x){
+double f_pi(double x){
   Numcalls++;
   return 4*sqrt(1-(1-x)*(1-x));
 }
 
-Q = Adaptive_Infinity(f_mix,a,b,acc,eps,&err);
+Q = Adaptive(f_pi,a,b,acc,eps,&err);
+printf("\nIntegration of f4(x)=4*sqrt(1-(1-x)^2) from 0 to 1:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%.20g\nCorrect result: Q_exact=%.20g\n",Q, M_PI);
 
-printf("\n\nIntegration of 4*sqrt(1-(1-x)*(1-x)) from 0 to 1:\n Q= %e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = PI\n");
 
-
-////////////////////////////////////////////////////////
-
+/*-------------------- Part B:  Infinite limits ---------------------*/
+printf("\n\n|-------------------- Part B:  Infinite limits ---------------------|\n");
 Numcalls = 0;
 err = 0;
 b=INFINITY;
-
 double f_exp(double x){
   Numcalls++;
   return exp(-x);
 }
-
 Q = Adaptive_Infinity(f_exp,a,b,acc,eps,&err);
+printf("Integration of f(x)=exp(-x) from 0 to INFINITY:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%lg\nCorrect result: Q_exact=1\n",Q);
 
-printf("\n\nIntegration of exp(-x) from 0 to Infinity:\n Q= %e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = 1\n");
-
-
-////////////////////////////////////////////////////////
 
 Numcalls = 0;
 err = 0;
 a=-INFINITY;
 b=INFINITY;
-
-double f_fancy(double x){
+double f_gauss(double x){
   Numcalls++;
-  return 1/sqrt(pow(x,12)+5);
+	return exp(-x*x);
 }
+Q = Adaptive_Infinity(f_gauss,a,b,acc,eps,&err);
+printf("\nIntegration of gauss-function f(x)=exp(-x^2) from -INFINITY to INFINITY:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%lg\nCorrect result: Q_exact=%lg <--sqrt(Pi)\n",Q, sqrt(M_PI));
 
-Q = Adaptive_Infinity(f_fancy,a,b,acc,eps,&err);
+//Comparing with the GSL gsl_integration_qagi integration routine
+double gauss_gsl(double x, void* p){
+		Numcalls++;
+		return exp(-x*x);
+	}
+	gsl_function F;
+  F.function = &gauss_gsl;
+  F.params = NULL;
+  double result;
+  int limit = 1e6;
+  gsl_integration_workspace* ws = gsl_integration_workspace_alloc(limit);
+  int flag = gsl_integration_qagi(&F,eps,acc,limit,ws,&result,&err);
+  printf("\nComparision with the GSL gsl_integration_qagi libary routine:\n");
+  printf("f(x)=exp(-x^2) from -INFINITY to INFINITY:\n");
+  printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+  printf("Result: QAGI=%lg\n",result);
 
-printf("\n\nIntegration of 1/sqrt(pow(x,12)+5) from -Infinity to Infinity:\n Q=%e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = 1.1765...\n");
 
-printf("---------------------------------------------------------------------\n");
-printf("Adaptive Integration of various functions using Clenshaw-Curtis Method\n");
-printf("---------------------------------------------------------------------\n");
 
+/*--------------- Part C: Clenshaw–Curtis variable transformation ----------------*/
+printf("\n\n|----------- Part C: Clenshaw–Curtis variable transformation -----------|\n");
 Numcalls = 0;
 err = 0;
 a=0;
 b=1;
-
 Q = Clenshaw_Curtis(f_invsqrt,a,b,acc,eps,&err);
-
-printf("\n\nIntegration of 1/sqrt(x) from 0 to 1: \n Q=%e \n Error=%lg\n",Q ,err);
-printf("Number of Calls =%i\n",Numcalls );
-printf("Correct result = 2\n");
+printf("Integration of f2(x)=1/sqrt(x) from 0 to 1 using Clenshaw–Curtis transform:\n");
+printf("Number of Calls = %i\nError = %lg\n",Numcalls, err);
+printf("Result: Q=%lg\nCorrect result: Q_exact=2\n",Q);
+printf("\nHence we see a significant reduction in the number of function calls\nas compared to original adaptive integration approach\n");
 
 return 0;
 }
