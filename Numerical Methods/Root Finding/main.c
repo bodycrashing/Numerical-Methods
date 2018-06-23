@@ -27,6 +27,7 @@ void f_Jacobian(gsl_vector* x, gsl_vector* fx, gsl_matrix* J){
 	double Y = gsl_vector_get(x,1);
 	gsl_vector_set(fx,1,A*Y*X-1.0);
 	gsl_vector_set(fx,1,exp(-X)+exp(-Y)-1.0-1.0/A);
+
 	gsl_matrix_set(J,0,0,A*Y);
 	gsl_matrix_set(J,0,1,A*X);
 	gsl_matrix_set(J,1,0,-1.0*exp(-X));
@@ -44,8 +45,10 @@ void rosenbrock(gsl_vector* x, gsl_vector* fx){
 void rosenbrock_Jacobian(gsl_vector* x, gsl_vector* fx, gsl_matrix* J){
   double X = gsl_vector_get(x,0);
 	double Y = gsl_vector_get(x,1);
+
         gsl_vector_set(fx,0,2.0*(X-1)-400.0*X*(Y-X*X));
         gsl_vector_set(fx,1,200.0*(Y-X*X));
+
 	gsl_matrix_set(J,0,0, 2.0*(600.0*X*X - 200.0*Y + 1.0));
 	gsl_matrix_set(J,0,1, -400.0*X);
 	gsl_matrix_set(J,1,0, -400.0*X);
@@ -63,13 +66,15 @@ void himmelblau(gsl_vector* x, gsl_vector* fx){
 void himmelblau_Jacobian(gsl_vector* x, gsl_vector* fx, gsl_matrix* J){
         double X = gsl_vector_get(x,0);
         double Y = gsl_vector_get(x,1);
-	gsl_vector_set(fx, 0, 2.0*(2.0*X*(X*X + Y -11.0) + X + Y*Y - 7.0));
-	gsl_vector_set(fx, 1, 2.0*(X*X + 2.0*Y*(X + Y*Y - 7.0) + Y - 11.0));
+	gsl_vector_set(fx,0, 2.0*(2.0*X*(X*X + Y-11.0) + X + Y*Y-7.0));
+	gsl_vector_set(fx,1, 2.0*(X*X + 2.0*Y*(X + Y*Y-7.0) + Y- 11.0));
 
-	gsl_matrix_set(J, 0, 0, 2*(4.0*X*X + 2.0*(X*X +Y -11.0) +1.0));
-	gsl_matrix_set(J, 0, 1, 2.0*(2.0*X+2.0*Y));
-	gsl_matrix_set(J, 1, 0, 2.0*(2.0*X+2.0*Y));
-	gsl_matrix_set(J, 1, 1, 2.0*(4.0*Y*Y + 2.0*(Y*Y + X - 7.0) +1.0));
+	//gsl_matrix_set(J,0,0, 2*(4.0*X*X + 2.0*(X*X +Y -11.0) +1.0));
+	gsl_matrix_set(J,0,0, 4*(3*X*X+Y-11) + 2);
+	gsl_matrix_set(J,0,1, 2.0*(2.0*X+2.0*Y));
+	gsl_matrix_set(J,1,0, 2.0*(2.0*X+2.0*Y));
+	//gsl_matrix_set(J,1,1, 2.0*(4.0*Y*Y + 2.0*(Y*Y + X-7.0) + 1.0));
+	gsl_matrix_set(J,1,1, 2 + 4*(X + 3*Y*Y-7));
 }
 
 
@@ -114,12 +119,13 @@ int main(void){
 
 	gsl_vector* x = gsl_vector_alloc(2);
 	gsl_vector* fx = gsl_vector_alloc(2);
-	double step = 1e-6, eps = 1e-4;
+	double step = 1e-6, eps = 1e-6;
 
 	printf("------ Part A: Back-tracking linesearch and numerical Jacobian ------\n\n");
 	gsl_vector_set(x,0,1.0/10000);
 	gsl_vector_set(x,1,1);
 	printf("------------ Roots of System of Equations ------------\n");
+	printf("dx=%lg  eps=%lg\n", step, eps);
 	printf("Starting points: x=%lg  y=%lg \n", gsl_vector_get(x,0), gsl_vector_get(x,1));
 	f(x,fx);
 	int iter_f =  Newton(f,x,step,eps);
@@ -150,39 +156,43 @@ int main(void){
 	printf("Determined in  %i iterations\n\n",iter_him);
 
 
+
+
+
+
+
 	/*------ Part B: Newton's method with analytic Jacobian ------*/
-	printf("\n\n");
-	printf("------ Part B: Newton's method with analytic Jacobian ------\n\n");
+	printf("\n------ Part B: Newton's method with analytic Jacobian ------\n\n");
 	// System of equations using analytical jacobian
 	printf("------------ System of Equations using Analytic Jacobian ------------\n");
 	gsl_vector_set(x,0,1.0/10000);
 	gsl_vector_set(x,1,1.0);
 	printf("Starting points: x=%lg  y=%lg \n", gsl_vector_get(x,0), gsl_vector_get(x,1));
-	//printf("Form of the analytical Jacobian for the system:\n");
 	int iter_f_analytical = Newton_Jacobian(f_Jacobian,x,step,eps);
 	printf("The computed roots are:\n");
 	vector_print(x);
 	printf("Number of iterations analytical Jacobian: %i\nNumber of iterations numerical Jacobian: %i\n\n",iter_f_analytical,iter_f);
 
-		// Rosenbrock with analytical jacobian
-				gsl_vector_set(x,0,2.0);
-        gsl_vector_set(x,1,2.0);
-        printf("Starting points: x=%lg  y=%lg \n", gsl_vector_get(x,0), gsl_vector_get(x,1));
-        int iter_ros_analytical = Newton_Jacobian(rosenbrock_Jacobian,x,step,eps);
-				printf("The computed roots are:\n");
-				vector_print(x);
-				printf("Number of iterations analytical Jacobian: %i\nNumber of iterations numerical Jacobian: %i\n\n",iter_ros_analytical,iter_ros);
+	// Rosenbrock with analytical jacobian
+	gsl_vector_set(x,0,2.0);
+	gsl_vector_set(x,1,2.0);
+	printf("Starting points: x=%lg  y=%lg \n", gsl_vector_get(x,0), gsl_vector_get(x,1));
+	int iter_ros_analytical = Newton_Jacobian(rosenbrock_Jacobian,x,step,eps);
+	printf("The computed roots are:\n");
+	vector_print(x);
+	printf("Number of iterations analytical Jacobian: %i\nNumber of iterations numerical Jacobian: %i\n\n",iter_ros_analytical,iter_ros);
 
 	// Himmelblau with analytical jacobian
-        gsl_vector_set(x,0,4.0);
-        gsl_vector_set(x,1,4.0);
-				printf("Starting points: x=%lg  y=%lg \n", gsl_vector_get(x,0), gsl_vector_get(x,1));
-        int iter_him_analytical = Newton_Jacobian(himmelblau_Jacobian,x,step,eps);
-				printf("The computed roots are:\n");
-				vector_print(x);
-				printf("Number of iterations analytical Jacobian: %i\nNumber of iterations numerical Jacobian: %i\n\n",iter_him_analytical,iter_him);
+	gsl_vector_set(x,0,4.0);
+	gsl_vector_set(x,1,4.0);
+	printf("Starting points: x=%lg  y=%lg \n", gsl_vector_get(x,0), gsl_vector_get(x,1));
+	int iter_him_analytical = Newton_Jacobian(himmelblau_Jacobian,x,step,eps);
+	printf("The computed roots are:\n");
+	vector_print(x);
+	printf("Number of iterations analytical Jacobian: %i\nNumber of iterations numerical Jacobian: %i\n\n",iter_him_analytical,iter_him);
 
-/*------- Comparing results to GSL Routine -------------*/
+
+	/*------- Comparing results to GSL Routine -------------*/
 	int n=2, status;
 	int iter=0;
 	double epsilon_system=1e-3, epsilon=1e-6;
