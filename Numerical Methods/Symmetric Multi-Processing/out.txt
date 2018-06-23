@@ -1,0 +1,12 @@
+
+Integration of gamma function from 0 to Pi:
+Error = 0.00241883
+Result: Q=1.39093
+Correct result: Q_exact=1.39320392968568
+Time spend without Multi threading is 4.09232 seconds 
+
+---------------------------------------------------------------------
+Test of Plain Monte Carlo Multi-Dimensional Integration With Multi Threading
+---------------------------------------------------------------------
+
+Time spend with Multi threading is 4.85614 seconds 
