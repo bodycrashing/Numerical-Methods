@@ -1,0 +1,3 @@
+
+|------- Solving Harmonic Differential Equation -------|
+The differential equation was integrated in:  steps=3300
