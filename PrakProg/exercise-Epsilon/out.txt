@@ -1,0 +1,25 @@
+INT_MAX = 2147483647
+my max int using WHILE-loop = 2147483647
+my max int using FOR-loop = 2147483647
+my max int using DO-WHILE-loop = 2147483647
+
+INT_MIN = -2147483648
+my MIN int using WHILE-loop = -2147483648
+my MIN int using FOR-loop = -2147483648
+my MIN int using DO-WHILE-loop = -2147483648
+
+x = 2.220446e-16
+FLT_EPSILON = 1.192093e-07
+DBL_EPSILON = 2.220446e-16
+LDBL_EPSILON = 1.0842e-19
+
+sum_up_float = inf
+sum_down_float = 0
+sum_up_double = inf
+sum_down_double = 0
+
+1.0 delt med max = 9.31323e-10
+
+Calling function 'equal.c' to test whether to numbers of a given type are equal within tolerannce tau:
+|a-b|/(|a|+|b|) < eps/2:
+returning 1

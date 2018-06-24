@@ -32,7 +32,7 @@ main (void)
 
   double result_f, error_f;
   double expected = -4.0;
-
+  
   gsl_function F;
   F.function = &f;
   F.params = NULL;

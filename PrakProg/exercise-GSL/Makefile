@@ -1,8 +1,13 @@
 CFLAGS += -Wall -std=gnu1x $$(gsl-config --cflags)
 LDLIBS += $$(gsl-config --libs)
+
 .PHONEY:all
 
-all:airy.svg
+all:airy.svg out.txt
+
+out.txt: main
+	./$< > $@
+	cat $@
 
 airy.svg:airy.gpi airy.out.txt
 	gnuplot $<

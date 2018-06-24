@@ -1,0 +1,13 @@
+--------- 
+Ghe following test the function libary 'komplex.h': ---------
+z1= (1,2)
+z2= (3,4)
+
+Test addition-function:
+z1+z2= (4,6)
+
+Test subtraction-function:
+z1-z2= (-2,-2)
+
+Test division-function:
+z1/z2= (0.44,0.08)
