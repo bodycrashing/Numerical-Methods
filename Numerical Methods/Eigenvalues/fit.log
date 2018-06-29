@@ -1,72 +1,428 @@
 
 
 *******************************************************************************
-Mon May  7 14:00:16 2018
+Mon Jun 25 15:42:13 2018
 
 
-FIT:    data read from "out.times.txt"
+FIT:    data read from "out.times.cyclic.txt"
         format = z
-        #datapoints = 4
+        #datapoints = 6
         residuals are weighted equally (unit weight)
 
-function used for fitting: f(x)
-	f(x)=b+(x/a)**c
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
 fitted parameters initialized with current variable values
 
-iter      chisq       delta/lim  lambda   a             c            
-   0 1.4015904156e+01   0.00e+00  4.63e+00    1.000000e+02   3.000000e+00
-   7 7.3639810617e-05  -9.49e-05  4.63e-03    2.100012e+02   3.096350e+00
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 1.6073350000e+00   0.00e+00  1.23e+00    1.000000e+02   3.000000e+00
+   7 6.5795305710e-06  -7.25e-04  1.23e-07    2.035459e+02   3.242552e+00
 
 After 7 iterations the fit converged.
-final sum of squares of residuals : 7.36398e-05
-rel. change during last iteration : -9.48819e-10
+final sum of squares of residuals : 6.57953e-06
+rel. change during last iteration : -7.24644e-09
 
-degrees of freedom    (FIT_NDF)                        : 2
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00606794
-variance of residuals (reduced chisquare) = WSSR/ndf   : 3.68199e-05
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00128253
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.64488e-06
 
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
-a               = 210.001          +/- 4.166        (1.984%)
-c               = 3.09635          +/- 0.1326       (4.281%)
+a1              = 203.546          +/- 3.787        (1.861%)
+c1              = 3.24255          +/- 0.0745       (2.297%)
 
 correlation matrix of the fit parameters:
-                a      c      
-a               1.000 
-c              -0.973  1.000 
+                a1     c1     
+a1              1.000 
+c1             -0.988  1.000 
 
 
 *******************************************************************************
-Fri Jun 15 08:51:55 2018
+Fri Jun 29 13:31:55 2018
 
 
-FIT:    data read from "out.times.txt"
+FIT:    data read from "out.times.cyclic.txt"
         format = z
-        #datapoints = 4
+        #datapoints = 6
         residuals are weighted equally (unit weight)
 
-function used for fitting: f(x)
-	f(x)=b+(x/a)**c
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
 fitted parameters initialized with current variable values
 
-iter      chisq       delta/lim  lambda   a             c            
-   0 1.4031136656e+01   0.00e+00  4.63e+00    1.000000e+02   3.000000e+00
-   7 4.3718995146e-05  -7.31e-04  4.63e-02    2.152118e+02   2.947163e+00
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 1.5942550000e+00   0.00e+00  1.23e+00    1.000000e+02   3.000000e+00
+   7 6.0946684201e-05  -8.72e-05  1.23e-07    2.030454e+02   3.206102e+00
 
 After 7 iterations the fit converged.
-final sum of squares of residuals : 4.3719e-05
-rel. change during last iteration : -7.31445e-09
+final sum of squares of residuals : 6.09467e-05
+rel. change during last iteration : -8.717e-10
 
-degrees of freedom    (FIT_NDF)                        : 2
-rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00467541
-variance of residuals (reduced chisquare) = WSSR/ndf   : 2.18595e-05
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00390342
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.52367e-05
 
 Final set of parameters            Asymptotic Standard Error
 =======================            ==========================
-a               = 215.212          +/- 3.608        (1.677%)
-c               = 2.94716          +/- 0.1006       (3.414%)
+a1              = 203.045          +/- 11.1         (5.464%)
+c1              = 3.2061           +/- 0.2166       (6.757%)
 
 correlation matrix of the fit parameters:
-                a      c      
-a               1.000 
-c              -0.975  1.000 
+                a1     c1     
+a1              1.000 
+c1             -0.988  1.000 
+
+
+*******************************************************************************
+Fri Jun 29 13:31:55 2018
+
+
+FIT:    data read from "out.times.eigbyeig.txt"
+        format = z
+        #datapoints = 6
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x)=b2+(x/a2)**c2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a2            c2           
+   0 5.8858475000e+01   0.00e+00  1.23e+00    1.000000e+02   3.000000e+00
+   5 1.2038546456e+00  -4.05e-02  1.23e-03    5.395778e+01   3.011868e+00
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.20385
+rel. change during last iteration : -4.05189e-07
+
+degrees of freedom    (FIT_NDF)                        : 4
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.548602
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.300964
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a2              = 53.9578          +/- 4.42         (8.192%)
+c2              = 3.01187          +/- 0.4579       (15.2%)
+
+correlation matrix of the fit parameters:
+                a2     c2     
+a2              1.000 
+c2              0.969  1.000 
+
+
+*******************************************************************************
+Fri Jun 29 17:42:47 2018
+
+
+FIT:    data read from "out.times.cyclic.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 5.1641000000e-02   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  12 6.0185310762e-35   0.00e+00  4.29e-03    1.678954e+02   3.801784e+00
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 6.01853e-35
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a1              = 167.895        
+c1              = 3.80178        
+
+
+*******************************************************************************
+Fri Jun 29 17:42:47 2018
+
+
+FIT:    data read from "out.times.eigbyeig.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x)=b2+(x/a2)**c2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a2            c2           
+   0 9.6208100000e-01   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  18 6.1629758220e-32   0.00e+00  4.29e-13    5.851451e+01   3.801784e+00
+
+After 18 iterations the fit converged.
+final sum of squares of residuals : 6.16298e-32
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a2              = 58.5145        
+c2              = 3.80178        
+
+
+*******************************************************************************
+Fri Jun 29 18:04:16 2018
+
+
+FIT:    data read from "out.times.cyclic.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 4.9441000000e-02   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+2286 2.8951826433e-07  -3.38e-01  4.29e-13    8.660471e+09   2.071202e-01
+
+After 2286 iterations the fit converged.
+final sum of squares of residuals : 2.89518e-07
+rel. change during last iteration : -3.3847e-06
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a1              = 8.66047e+09    
+c1              = 0.20712        
+
+
+*******************************************************************************
+Fri Jun 29 18:04:16 2018
+
+
+FIT:    data read from "out.times.eigbyeig.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x)=b2+(x/a2)**c2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a2            c2           
+   0 1.0979810000e+00   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  16 2.0954117795e-31   0.00e+00  4.29e-01    5.769540e+01   3.568352e+00
+
+After 16 iterations the fit converged.
+final sum of squares of residuals : 2.09541e-31
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a2              = 57.6954        
+c2              = 3.56835        
+
+
+*******************************************************************************
+Fri Jun 29 18:05:43 2018
+
+
+FIT:    data read from "out.times.cyclic.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 5.1641000000e-02   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  12 6.0185310762e-35   0.00e+00  4.29e-03    1.678954e+02   3.801784e+00
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 6.01853e-35
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a1              = 167.895        
+c1              = 3.80178        
+
+
+*******************************************************************************
+Fri Jun 29 18:05:43 2018
+
+
+FIT:    data read from "out.times.eigbyeig.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x)=b2+(x/a2)**c2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a2            c2           
+   0 9.9726100000e-01   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  16 2.4651903288e-31   0.00e+00  4.29e-01    5.831130e+01   3.655514e+00
+
+After 16 iterations the fit converged.
+final sum of squares of residuals : 2.46519e-31
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a2              = 58.3113        
+c2              = 3.65551        
+
+
+*******************************************************************************
+Fri Jun 29 18:07:53 2018
+
+
+FIT:    data read from "out.times.cyclic.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 5.1641000000e-02   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  12 6.0185310762e-35   0.00e+00  4.29e-03    1.678954e+02   3.801784e+00
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 6.01853e-35
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a1              = 167.895        
+c1              = 3.80178        
+
+
+*******************************************************************************
+Fri Jun 29 18:07:53 2018
+
+
+FIT:    data read from "out.times.eigbyeig.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x)=b2+(x/a2)**c2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a2            c2           
+   0 9.7986100000e-01   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  16 0.0000000000e+00  -inf       4.29e-11    5.839604e+01   3.851421e+00
+
+After 16 iterations the fit converged.
+final sum of squares of residuals : 0
+abs. change during last iteration : -1.2326e-32
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a2              = 58.396         
+c2              = 3.85142        
+
+
+*******************************************************************************
+Fri Jun 29 18:10:54 2018
+
+
+FIT:    data read from "out.times.cyclic.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=b1+(x/a1)**c1
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a1            c1           
+   0 5.1641000000e-02   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  12 6.0185310762e-35   0.00e+00  4.29e-03    1.678954e+02   3.801784e+00
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 6.01853e-35
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a1              = 167.895        
+c1              = 3.80178        
+
+
+*******************************************************************************
+Fri Jun 29 18:10:54 2018
+
+
+FIT:    data read from "out.times.eigbyeig.txt"
+        format = z
+        #datapoints = 2
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x)=b2+(x/a2)**c2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a2            c2           
+   0 9.8846100000e-01   0.00e+00  4.29e-01    1.000000e+02   3.000000e+00
+  16 1.9721522631e-31   0.00e+00  4.29e-01    5.835438e+01   3.752593e+00
+
+After 16 iterations the fit converged.
+final sum of squares of residuals : 1.97215e-31
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a2              = 58.3544        
+c2              = 3.75259        

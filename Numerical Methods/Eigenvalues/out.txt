@@ -1,21 +1,60 @@
 
-a random symmetric matrix A: 
+------ Part A: Cyclic Jacobi diagonalization of 5x5 matrix: -------
+A random symmetric matrix A: 
   0.840  0.394  0.783  0.798  0.912
   0.394  0.198  0.335  0.768  0.278
   0.783  0.335  0.554  0.477  0.629
   0.798  0.768  0.477  0.365  0.513
   0.912  0.278  0.629  0.513  0.952
 
-the result of Jacobi diagonalization: 
-sweeps	 = 6
-eigenvalues:
+Sweeps	 = 6
+Number of rotations = 39
+Eigenvalues:
  -0.557 -0.124  0.069  0.461  3.059
 
-check: V^T*A*V should be diagonal with above eigenvalues:
+Check: V^T*A*V should be diagonal with above eigenvalues:
  -0.557 -0.000  0.000  0.000 -0.000
  -0.000 -0.124  0.000 -0.000  0.000
   0.000  0.000  0.069  0.000 -0.000
   0.000 -0.000  0.000  0.461  0.000
  -0.000  0.000 -0.000  0.000  3.059
-number of rotations = 39
+
+------ Part B: Eig. by Eig Jacobi diagonalization of 5x5 matrix: -------
+
 1. Using the same matrix A as before for comparison
+The first 5 eigenvalue in Ascending order are: 
+e_0 = -0.556796
+Number of sweeps required: 29
+Number of rotations required: 108
+
+e_1 = -0.123545
+Number of sweeps required: 90
+Number of rotations required: 394
+
+e_2 = 0.069162
+Number of sweeps required: 122
+Number of rotations required: 742
+
+e_3 = 0.460944
+Number of sweeps required: 124
+Number of rotations required: 1091
+
+e_4 = 3.05896
+Number of sweeps required: 125
+Number of rotations required: 1440
+
+The first 5 eigenvalue in Descending order are: 
+e_0 = 3.05896
+e_1 = 0.460944
+e_2 = 0.069162
+e_3 = -0.123545
+e_4 = -0.556796
+
+Comparision of the Cyclic and Value by Value method
+	Sweeps	Rotations
+Cyclic:	6	39
+1 Eig:	29	108
+2 Eig:	90	394
+3 Eig:	122	742
+4 Eig:	124	1091
+5 Eig:	125	1440

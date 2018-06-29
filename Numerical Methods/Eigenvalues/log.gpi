@@ -5,9 +5,14 @@ set xlabel "matrix size"; \
 set ylabel "diagonalization time, sec"; \
 set title "diagonalization time as function of matrix size (`uname -m`)"; \
 set key left; \
-f(x)=b+(x/a)**c; \
-b=0; a=100; c=3;\
-fit f(x) "out.times.txt" via a,c; \
-T = sprintf("fit: (n/%3.0f)^{%3.1f}",a,c); \
-plot "out.times.txt" title "measurement", f(x) title T; \
+f1(x)=b1+(x/a1)**c1; \
+b1=0; a1=100; c1=3;\
+fit f1(x) "out.times.cyclic.txt" via a1,c1; \
+T1 = sprintf("fit: (n/%3.0f)^{%3.1f}",a1,c1); \
+f2(x)=b2+(x/a2)**c2; \
+b2=0; a2=100; c2=3;\
+fit f2(x) "out.times.eigbyeig.txt" via a2,c2; \
+T2 = sprintf("fit: (n/%3.0f)^{%3.1f}",a2,c2); \
+plot "out.times.cyclic.txt" title "measurement cyclic", f1(x) title T1 \
+	,"out.times.eigbyeig.txt" title "measurement cyclic", f2(x) title T2; \
 

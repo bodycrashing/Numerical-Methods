@@ -16,7 +16,6 @@ void vector_print(gsl_vector *v){
 	}
 
 
-
 int main(int argc, char** argv)
 {
 int n = atoi(argv[1]);
@@ -30,77 +29,75 @@ for(int i=0;i<n;i++) for(int j=i;j<n;j++) {
 	}
 gsl_matrix_memcpy(B,A);
 
-
 gsl_matrix *V = gsl_matrix_alloc(n,n);
 gsl_vector *e = gsl_vector_alloc(n);
 gsl_matrix*	VTAV = gsl_matrix_alloc(n,n);
 int num_rot_cyclic = 0;
 
-//printf("---------------\tExercise Part A:\t---------------\n");
-/*int sweeps = jacobi(A,e,V,&num_rot); printf("n=%i, sweeps=%i\n",n,sweeps);
+
+int sweeps_cyclic = jacobi(A, e, V, &num_rot_cyclic);
 if(n<max_print){
-fprintf(stderr,"\na random symmetric matrix A: \n"); matrix_print(B);
-fprintf(stderr,"\nthe result of Jacobi diagonalization: \n");
-fprintf(stderr,"sweeps\t = %d\n",sweeps);
-fprintf(stderr, "eigenvalues:\n");
+printf("\n------ Part A: Cyclic Jacobi diagonalization of %ix%i matrix: -------\n",n,n);
+printf("A random symmetric matrix A: \n"); matrix_print(B);
+printf("\nSweeps\t = %d\n",sweeps_cyclic);
+printf("Number of rotations = %i\n", num_rot_cyclic);
+printf("Eigenvalues:\n");
 vector_print(e);
 gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,B,V,0,A);
 gsl_blas_dgemm(CblasTrans  ,CblasNoTrans,1,V,A,0,VTAV);
-fprintf(stderr, "\ncheck: V^T*A*V should be diagonal with above eigenvalues:\n");
+printf("\nCheck: V^T*A*V should be diagonal with above eigenvalues:\n");
 matrix_print(VTAV);
-printf("number of rotations = %i\n", num_rot);
-}
-*/
-
-int sweeps = jacobi(A, e, V, &num_rot_cyclic);
-FILE* cyclic_data = fopen("cyclic_data.txt","w+");
-fprintf(cyclic_data,"%i\t%i\t%i\n", n, sweeps, num_rot_cyclic);
-fclose(cyclic_data);
-
-if(n<max_print){
-printf("\na random symmetric matrix A: \n"); matrix_print(B);
-printf("\nthe result of Jacobi diagonalization: \n");
-printf("sweeps\t = %d\n",sweeps);
-printf("eigenvalues:\n");
-vector_print(e);
-gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,B,V,0,A);
-gsl_blas_dgemm(CblasTrans  ,CblasNoTrans,1,V,A,0,VTAV);
-printf("\ncheck: V^T*A*V should be diagonal with above eigenvalues:\n");
-matrix_print(VTAV);
-printf("number of rotations = %i\n", num_rot_cyclic);
 }
 
-
-//printf("---------------\tExercise Part B:\t---------------\n");
-int row_number = 3;
+printf("\n------ Part B: Eig. by Eig Jacobi diagonalization of %ix%i matrix: -------\n",n,n);
+int row_number = 5;
+int sorting = 0;
 int num_rot_eig_by_eig = 0;
 gsl_matrix_set_identity(V);
 gsl_vector_set_zero(e);
-printf("1. Using the same matrix A as before for comparison\n");
+gsl_vector* sweeps_eig_by_eig = gsl_vector_alloc(n);
+gsl_vector* rot_eig_by_eig = gsl_vector_alloc(n);
+printf("\n1. Using the same matrix A as before for comparison\n");
 
-sweeps = jacobi_eig_by_eig(A, e, V, row_number, &num_rot_eig_by_eig);
-FILE* eig_by_eig_data = fopen("eig_by_eig_data.txt","w+");
-fprintf(eig_by_eig_data,"%i\t%i\t%i\n", n, sweeps, num_rot_cyclic);
-fclose(eig_by_eig_data);
-/*
-if (n<max_print) {
-	printf("The first %i eigenvalue (in ascending order) are: \n", row_number);
+
+if (n<max_print){
+	printf("The first %i eigenvalue in Ascending order are: \n", row_number);
 	for (int i = 0; i < row_number; i++) {
 		gsl_matrix_memcpy(A,B);
-		int sweeps = jacobi_eig_by_eig(A,e,V,i);
-		printf("lambda_%i = %lg (determined after n = %i sweeps)\n", i, gsl_vector_get(e, i), sweeps);
+		gsl_vector_set_zero(e);
+		int sweeps = jacobi_eig_by_eig(A, e, V, i+1, &num_rot_eig_by_eig, sorting);
+		gsl_vector_set(sweeps_eig_by_eig, i, sweeps); gsl_vector_set(rot_eig_by_eig, i, num_rot_eig_by_eig);
+		printf("e_%i = %lg\n", i, gsl_vector_get(e,i));
+		printf("Number of sweeps required: %i\nNumber of rotations required: %i\n\n", sweeps, num_rot_eig_by_eig);
 	}
 }
-*/
 
 
+sorting = 1;
+if (n<max_print){
+	printf("The first %i eigenvalue in Descending order are: \n", row_number);
+	for (int i = 0; i < row_number; i++) {
+		gsl_matrix_memcpy(A,B);
+		gsl_vector_set_zero(e);
+		int sweeps = jacobi_eig_by_eig(A, e, V, i+1, &num_rot_eig_by_eig, sorting);
+		printf("e_%i = %lg\n", i, gsl_vector_get(e,i));
+	}
+}
+
+printf("\nComparision of the Cyclic and Value by Value method\n");
+printf("\tSweeps\tRotations\n");
+printf("Cyclic:\t%i\t%i\n", sweeps_cyclic, num_rot_cyclic);
+for (double i = 0; i < row_number; i++) {
+	double sweeps_i = gsl_vector_get(sweeps_eig_by_eig,i);
+	double num_rot_i = gsl_vector_get(rot_eig_by_eig,i);
+	printf("%lg Eig:\t%lg\t%lg\n", i+1, sweeps_i, num_rot_i);
+}
 
 // Freeing memory
 gsl_matrix_free(A);
 gsl_matrix_free(B);
 gsl_matrix_free(V);
 gsl_matrix_free(VTAV);
-
 gsl_vector_free(e);
 
 return 0;
