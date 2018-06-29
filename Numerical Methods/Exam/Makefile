@@ -8,15 +8,13 @@ OBJ = main.o rk5.o
 all: out.txt harmonic.svg
 	cat $<
 
-
- out.txt: main
-	./$< > $@
-
-main: $(OBJ)
-
 harmonic.svg: plot.gpi data.txt
 	gnuplot $<
 
+ out.txt data.txt: main
+	./$< > $@
+
+main: $(OBJ)
 
 $(OBJ): rk5.h
 

@@ -43,9 +43,8 @@ void rkstep5(void f(double t, gsl_vector* y, gsl_vector* dydt), double t, gsl_ve
 	for(i=0; i<n; i++){
 		gsl_vector_set(yh,i,gsl_vector_get(y,i) + 16./135*gsl_vector_get(k1,i)*h + 6656./12825*gsl_vector_get(k3,i)*h + 28561./56430*gsl_vector_get(k4,i)*h - 9./50*gsl_vector_get(k5,i)*h + 2./55*gsl_vector_get(k6,i)*h);
 
-	gsl_vector_set(err,i,(gsl_vector_get(k1,i)*h - gsl_vector_get(k1,i)*h/2 - gsl_vector_get(k6,i)*h/2)/pow(2,p));
+	gsl_vector_set(err,i,(gsl_vector_get(k1,i)*h - gsl_vector_get(k1,i)*h/2 - gsl_vector_get(k6,i)*h/2)/(pow(2,p)-1));
 	}
-
 
   gsl_vector_free(yt);
   gsl_vector_free(k1);
@@ -57,8 +56,6 @@ void rkstep5(void f(double t, gsl_vector* y, gsl_vector* dydt), double t, gsl_ve
 
 	return;
 }
-
-
 
 
 
@@ -97,27 +94,6 @@ f(x+h,yxh,k4);    for(i=0;i<n;i++){
 
   return;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 int ode_driver(void f(double x, gsl_vector *y, gsl_vector *dydx),

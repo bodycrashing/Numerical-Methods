@@ -1,3 +1,5 @@
 
 |------- Solving Harmonic Differential Equation -------|
-The differential equation was integrated in:  steps=3300
+Number of steps used by the two methods to complete the integration:
+rk5=8489
+k23=919
