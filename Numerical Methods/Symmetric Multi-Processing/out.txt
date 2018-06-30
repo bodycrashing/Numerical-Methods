@@ -1,12 +1,21 @@
+----------- Plain Monte Carlo Integration WITHOUT Multi Threading -------------
 
 Integration of gamma function from 0 to Pi:
 Error = 0.00241883
 Result: Q=1.39093
 Correct result: Q_exact=1.39320392968568
-Time spend without Multi threading is 4.09232 seconds 
+Time spend WITHOUT Multi threading: 4.1824 seconds 
 
----------------------------------------------------------------------
-Test of Plain Monte Carlo Multi-Dimensional Integration With Multi Threading
----------------------------------------------------------------------
+----------- Plain Monte Carlo Integration WITH Multi Threading -------------
 
-Time spend with Multi threading is 4.85614 seconds 
+Integration of gamma function from 0 to Pi:
+Error = 0.00264859
+Result: Q=1.39177
+Correct result: Q_exact=1.39320392968568
+Time spend WITH Multi threading: 4.75867 seconds 
+
+As is evident from the results the multi-threaded version of the plain
+Monte Carlo integration actually takes long time tothan the ordinary implementation.
+I have tested other students implentation on my Macbook and in all cases the multithreaded
+are slower. In other words it seems that the time it takes to allocate the 'workers'
+is greater than time gained by actual multithreading.
