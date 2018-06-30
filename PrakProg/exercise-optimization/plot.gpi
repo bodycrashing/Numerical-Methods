@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'fit.svg'
+set xlabel 't'
+set ylabel 'y'
+set title 'Substace with T = 2.72352'
+plot 'out.txt' index 1 using 1:2:3 with errorbars title 'data points'\
+	, 'out.txt' index 2 using 1:2 with lines title 'my fit'

@@ -1,0 +1,3 @@
+	  double f = 1/x;
+	  return f;
+	}

@@ -52,7 +52,7 @@ int main(){
   double xmin = gsl_vector_get(solver->x,0);
   double ymin = gsl_vector_get(solver->x,1);
   printf("# The minimum of the Rosenbrock function is (x,y) = (%g,%g)\n",xmin,ymin);
-  printf("# It took %i interations.\n\n",iter);
+  printf("# Computed in %i interations.\n\n",iter);
 
 
   /*--------------- Exercise 2: Bound states of hydrogen atom --------------*/

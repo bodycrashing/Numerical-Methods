@@ -1,5 +1,5 @@
 # The minimum of the Rosenbrock function is (x,y) = (1,1)
-# It took 13281 interations.
+# Computed in 13281 interations.
 
 0.001 0.000999 0.000999
 0.101 0.0912971 0.0912972

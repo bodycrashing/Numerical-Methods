@@ -1,0 +1,9 @@
+set term pslatex
+set out "figure.tex"
+set title  "Error Function: erf(x)"
+set xlabel "x"
+set ylabel "erf(x)"
+set grid
+set key left
+plot \
+"data" using 1:2 with lines title "erf(x)"
