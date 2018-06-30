@@ -46,25 +46,22 @@ int main(int argc, char const *argv[]) {
   gsl_matrix_set_row(M,1,M2);
   gsl_matrix_set_row(M,2,M3);
 
+	gsl_matrix_memcpy(A,M);
+	printf("\nThe Matrix A:\n");
+	matrix_print(M);
 
-  	gsl_matrix_memcpy(A,M);
-  	matrix_print(M);
+	printf("\nThe required solution b:\n");
+	vector_print(b);
 
-    printf("\n");
-  	vector_print(b);
+	/*Solving the linear equations*/
+	gsl_linalg_HH_solve(M,b,x);
+	printf("\nThe computed solution x is found to be:\n");
+	vector_print(x);
 
-
-
-  	gsl_linalg_HH_solve(M,b,x);
-
-    printf("\n");
-  	vector_print(x);
-    printf("\n");
-
-
-  	gsl_blas_dgemv(CblasNoTrans,1,A,x,0,y);
-
-  	vector_print(y);
+	/*Testing that Ax=b*/
+	gsl_blas_dgemv(CblasNoTrans,1,A,x,0,y);
+	printf("\nTesting that Ax=b\n");
+	vector_print(y);
 
 gsl_matrix_free(A);
 gsl_matrix_free(M);

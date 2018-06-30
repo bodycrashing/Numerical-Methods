@@ -3,15 +3,14 @@ LDLIBS = `gsl-config --libs`
 CC = gcc
 
 
-report.pdf: report.tex figure.tex
-		latex report
-		latex report
-		dvipdf report
+report.pdf: report.tex figure.pdf
+	pdflatex $<
+	pdflatex $<
 
-figure.tex: plot.gpi data
+figure.pdf: plot.gpi data
 	gnuplot plot.gpi
 
-data:main
+data: main
 	./main -3 3 0.1 > data
 
 .PHONEY:clean

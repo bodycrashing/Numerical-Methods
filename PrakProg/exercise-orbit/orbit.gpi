@@ -1,0 +1,8 @@
+set term TERM
+set out "OUT"
+set xlabel "x"
+set ylabel "y"
+set size square
+set grid
+set title "Newtonian Orbit"
+plot "data" using (1/$2)*sin($1):(1/$2)*cos($1) with lines notitle

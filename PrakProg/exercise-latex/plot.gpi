@@ -1,5 +1,5 @@
-set term pslatex
-set out "figure.tex"
+set term pdf
+set out "figure.pdf"
 set title  "Error Function: erf(x)"
 set xlabel "x"
 set ylabel "erf(x)"
