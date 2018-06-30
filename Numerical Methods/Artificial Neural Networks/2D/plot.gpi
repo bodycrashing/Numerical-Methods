@@ -1,0 +1,9 @@
+set term svg size 800,600 background rgb "white"
+set out  "Neural_Network_Interpolation.svg"
+set xlabel "x"
+set ylabel "y"
+set key right bottom font ",10"
+set grid
+set view 70,50,1,1
+set title  "Neural Network Interpolation of cos(5*x-1)*exp(-y*y)*exp(-x*x) "
+splot cos(5*x-1)*exp(-y*y)*exp(-x*x) title "Data","out.txt" index 1 with points pointtype 6 title "Neural Interpolation" 

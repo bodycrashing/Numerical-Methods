@@ -1,6 +1,6 @@
 CFLAGS += $$(gsl-config --cflags) -std=gnu1x -Wall
 LDLIBS += $$(gsl-config --libs)
-obj =  ann.c minimization.o qr.o minimization.h
+obj =  ann.o minimization.o qr.o minimization.h
 datafile = plot_data.txt
 
 .PHONEY: test all clean
@@ -18,7 +18,7 @@ plot2.svg: $(datafile)
         set ylabel "y"; \
         set title "ANN interpolation"; \
         splot "$<" index 2 with points title " cos(x+y)*sin(2*(x+y)) data points" \
-	,"$<" index 3  using 1:2:3 with point title "ANN interpolation" ; \
+	,"$<" index 3  using 1:2:3 with points pointtype 6 title "ANN interpolation" ; \
         ' | gnuplot
 
 
