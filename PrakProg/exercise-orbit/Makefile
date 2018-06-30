@@ -5,13 +5,13 @@ PLOTTER = gnuplot
 
 .PHONEY:default
 
-default:logistic.svg  plot1.svg plot2.svg plot3.svg
+default:logistic.svg plot1.svg plot2.svg plot3.svg
 
 logistic.svg:logistic.gpi logistic.out.txt
 	gnuplot $<
 
-logistic.out.txt: main_logistic
-	./$< > $@
+logistic.out.txt: main
+	./$< > null
 
 main_logistic: main_logistic.o
 

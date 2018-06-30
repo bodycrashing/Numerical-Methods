@@ -28,7 +28,7 @@ int orbit(double x, const double y[], double dydx[], void* params){
 
 int main(int argc,char** argv){
 
-	//FILE* logistic_stream = fopen("logistic.out.txt","w+");
+	FILE* logistic_stream = fopen("logistic.out.txt","w+");
   double epsabs = 1e-6;
 	double epsrel = 1e-6;
   double hstart = 1e-3;
@@ -47,7 +47,7 @@ int main(int argc,char** argv){
           printf ("error: logistic driver returned %d\n", logistic_result);
           break;
         }
-    printf("%lg\t%lg\t%lg\n", i, y1[0],logistic(i));
+    fprintf(logistic_stream,"%lg\t%lg\t%lg\n", i, y1[0],logistic(i));
     }
 
 
