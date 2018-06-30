@@ -5,23 +5,15 @@ PLOTTER = gnuplot
 
 .PHONEY:default
 
-default:logistic.svg out1.txt out2.txt out3.txt plot1.svg plot2.svg plot3.svg
+default:logistic.svg  plot1.svg plot2.svg plot3.svg
 
 logistic.svg:logistic.gpi logistic.out.txt
 	gnuplot $<
 
-logistic.out.txt: main
+logistic.out.txt: main_logistic
 	./$< > $@
 
-
-out1.txt: main Makefile
-	./$< 0 0 > $@
-
-out2.txt: main Makefile
-	./$< 0 -0.4 > $@
-
-out3.txt: main Makefile
-	./$< 0.01 -0.4 > $@
+main_logistic: main_logistic.o
 
 plot1.svg: plot1.gpi out1.txt
 	gnuplot $<
@@ -32,7 +24,16 @@ plot2.svg: plot2.gpi out2.txt
 plot3.svg: plot3.gpi out3.txt
 	gnuplot $<
 
+out1.txt: main Makefile
+	./$< 0 0 > $@
 
+out2.txt: main Makefile
+	./$< 0 -0.4 > $@
+
+out3.txt: main Makefile
+	./$< 0.01 -0.4 > $@
+
+main: main.o
 
 .PHONEY:clean
 clean:

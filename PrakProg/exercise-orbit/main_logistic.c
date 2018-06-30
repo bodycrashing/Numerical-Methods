@@ -3,7 +3,25 @@
 #include <gsl/gsl_odeiv2.h>
 #include <gsl/gsl_errno.h>
 #include <math.h>
+
+
+int logistic_diff (double t, const double y[], double f[], void *params)
+{
+  (void)(t); /* avoid unused parameter warning */
+  f[0] = y[0]*(1 - y[0]);
+  return GSL_SUCCESS;
+}
+
+double logistic(double x)
+{
+  double result = 1/(1 + exp(-x));
+  return result;
+};
+
+
+
 int main(int argc, char const *argv[]) {
+  //FILE* logistic_stream = fopen("logistic.out.txt","w+");
   double epsabs = 1e-8;
   double epsrel = 1e-8;
   double hstart = 1e-3;
@@ -24,6 +42,5 @@ int main(int argc, char const *argv[]) {
         }
     printf("%lg\t%lg\t%lg\n", i, y1[0],logistic(i));
     }
-
   return 0;
 }
