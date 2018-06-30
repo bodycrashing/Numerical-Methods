@@ -15,7 +15,4 @@ int ode_driver(void f(double x, gsl_vector* y, gsl_vector* dydx),
                               double b, double h, double acc, double eps, int max);
 
 
-double integrator(void f(double x, gsl_vector* y, gsl_vector* dydx),gsl_vector *xlist, gsl_matrix *ylist,
-double b, double h, double acc, double eps, int max);
-
 #endif

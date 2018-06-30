@@ -1,0 +1,6 @@
+set term 'svg' background 'white'
+set out 'harmonic.svg'
+set key bottom right
+set xlabel "x"
+set ylabel "y(x)"
+plot 'data.txt' index 0 using 1:2 with lines lc rgb "cyan" title "ODE RK23 Harmonic Diff. Eqn.\

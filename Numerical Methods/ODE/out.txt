@@ -1,0 +1,30 @@
+
+------- Part A/B: Embedded Runge-Kutta ODE23 integrator with Path Storing -------
+
+|------- Harmonic Differential Equation -------|
+y''=-y
+Integration limits: a=0  b=12.5664
+Number of steps=918
+Result:	      y1=-1.48169e-08		y2=0.999999
+Exact result: sin(b)=-4.89859e-16	cos(b)=1
+
+|------- Logistic Differential Equation -------|
+y'=y*(1-y)
+Integration limits: a=0  b=5
+Number of steps=83
+Result:	      y=0.993308
+Exact result: 1/(1+exp(-b))=0.993307
+
+
+------------- Part C: A definite integral as an ODE --------------
+Integration of f(x)=cos(x):
+Integration limits: a=0  b=3.14159
+Number of steps=158
+Result:	      I=-2.04807e-07
+Exact result: I_exact=1.22465e-16
+
+Integration of Error function erf(x):
+Integration limits: a=-3.14159  b=3.14159
+Number of steps=246
+Result:	      I=0.999991
+Exact result: erf(Pi)=0.999991

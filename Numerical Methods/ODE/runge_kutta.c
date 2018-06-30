@@ -17,18 +17,14 @@ gsl_vector* k4 = gsl_vector_alloc(n);
 
 f(x,yx,k1);            for(i=0;i<n;i++) gsl_vector_set(y_temp,i,gsl_vector_get(yx,i) + 1./2*gsl_vector_get(k1,i)*h);
 f(x+1./2*h,y_temp,k2); for(i=0;i<n;i++) gsl_vector_set(y_temp,i,gsl_vector_get(yx,i) + 3./4*gsl_vector_get(k2,i)*h);
-f(x+3./4*h,y_temp,k3); for(i=0;i<n;i++){
-                        gsl_vector_set(yxh,i,
-				gsl_vector_get(yx,i) + (2./9*gsl_vector_get(k1,i) +
-                        1./3*gsl_vector_get(k2,i) + 4./9*gsl_vector_get(k3,i))*h);
-                      }
+f(x+3./4*h,y_temp,k3); for(i=0;i<n;i++){gsl_vector_set(yxh,i, gsl_vector_get(yx,i) + (2./9*gsl_vector_get(k1,i) +
+                                        1./3*gsl_vector_get(k2,i) + 4./9*gsl_vector_get(k3,i))*h);
+                }
 f(x+h,yxh,k4);    for(i=0;i<n;i++){
                   gsl_vector_set(y_temp,i, gsl_vector_get(yx,i) + (7./24*gsl_vector_get(k1,i) +
                   1./4*gsl_vector_get(k2,i) + 1./3*gsl_vector_get(k3,i) +
                   1./8*gsl_vector_get(k4,i))*h);
-
                   gsl_vector_set(err,i,gsl_vector_get(yxh,i) - gsl_vector_get(y_temp,i));
-//                  fprintf(stderr, "\n%lg\n",gsl_vector_get(yxh,i) - gsl_vector_get(y_temp,i));
                 }
 
   gsl_vector_free(y_temp);
@@ -36,6 +32,8 @@ f(x+h,yxh,k4);    for(i=0;i<n;i++){
   gsl_vector_free(k2);
   gsl_vector_free(k3);
   gsl_vector_free(k4);
+
+  return;
 }
 
 
@@ -80,19 +78,9 @@ int ode_driver(void f(double x, gsl_vector *y, gsl_vector *dydx),
       h*=2;
     }
   }
-  return k+1;
+  return k;
 
   gsl_vector_free(y);
   gsl_vector_free(yxh);
   gsl_vector_free(err_vec);
-}
-
-
-
-double integrator(void f(double x, gsl_vector* y, gsl_vector* dydx),gsl_vector *xlist, gsl_matrix *ylist,
-double b, double h, double acc, double eps, int max){
-
-	int k = ode_driver(f,xlist,ylist,b,h,acc,eps,max);
-	printf("Number of steps %i\n",k);
-	return gsl_matrix_get(ylist,k-1,0);
 }

@@ -4,12 +4,22 @@ LDLIBS += $$(gsl-config --libs)
 OBJ = main.o runge_kutta.o
 
 .PHONEY: all
-all: out.txt
 
-out.txt: main
+all: out.txt harmonic.svg logistic.svg
+	cat $<
+
+harmonic.svg: plot.harmonic.gpi data.txt
+	gnuplot $<
+
+logistic.svg: plot.logistic.gpi data.txt
+	gnuplot $<
+
+ out.txt data.txt: main
 	./$< > $@
 
 main: $(OBJ)
+
+
 
 $(OBJ): runge_kutta.h
 

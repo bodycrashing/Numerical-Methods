@@ -1,0 +1,6 @@
+set term 'svg' background 'white'
+set out 'logistic.svg'
+set key top left
+set xlabel "x"
+set ylabel "y(x)"
+plot 'data.txt'  index 1 using 1:2 with lines  title "ODE RK23 Logistic Diff. Eqn." \
