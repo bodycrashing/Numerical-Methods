@@ -4,6 +4,5 @@ set xlabel "x";\
 set ylabel "y";\
 set title "Comparison of rkstep5 and rkstep23 solving Harmonic Diff. Eq."
 set key below
-plot "data.txt"  index 0 using 1:2 with lines title "ODE rkstep5: Error estimated using step-doubling"\
-,"data.txt" index 1 using 1:2 with lines title "ODE rkstep23: using 'standard'\
- embedded lower order Error estimate"
+plot "data.txt"  index 0 using 1:2 with lines title "ODE rkstep5: Error estimated step-doubling"\
+,"data.txt" index 1 using 1:2 with lines title "ODE rkstep23: Error estimate using embedded low order"\

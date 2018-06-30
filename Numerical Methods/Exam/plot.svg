@@ -127,14 +127,14 @@
 		<text><tspan font-family="Arial" >Comparison of rkstep5 and rkstep23 solving Harmonic Diff. Eq.</tspan></text>
 	</g>
 </g>
-	<g id="gnuplot_plot_1" ><title>ODE rkstep5: Error estimated using step-doubling</title>
+	<g id="gnuplot_plot_1" ><title>ODE rkstep5: Error estimated step-doubling</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(583.7,448.5)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >ODE rkstep5: Error estimated using step-doubling</tspan></text>
+	<g transform="translate(514.0,448.5)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+		<text><tspan font-family="Arial" >ODE rkstep5: Error estimated step-doubling</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(148,   0, 211)'  d='M592.0,444.0 L599.9,444.0 M71.9,54.1 L72.0,54.1 L72.1,54.1 L72.2,54.1 L72.3,54.1 L72.4,54.1
+	<path stroke='rgb(148,   0, 211)'  d='M522.3,444.0 L564.5,444.0 M71.9,54.1 L72.0,54.1 L72.1,54.1 L72.2,54.1 L72.3,54.1 L72.4,54.1
 		L72.5,54.1 L72.6,54.1 L72.7,54.1 L72.8,54.1 L72.8,54.2 L72.9,54.2 L73.0,54.2 L73.1,54.2
 		L73.2,54.2 L73.3,54.2 L73.4,54.2 L73.4,54.3 L73.5,54.3 L73.6,54.3 L73.7,54.3 L73.8,54.3
 		L73.9,54.4 L74.0,54.4 L74.1,54.4 L74.2,54.4 L74.2,54.5 L74.3,54.5 L74.4,54.5 L74.5,54.5
@@ -1129,14 +1129,14 @@
 		L522.6,54.2 L522.6,54.1 L522.7,54.1 L522.8,54.1 L522.9,54.1 L523.0,54.1 L523.1,54.1 L523.2,54.1
 		L523.3,54.1 L523.4,54.1 L523.5,54.1  '/></g>
 	</g>
-	<g id="gnuplot_plot_2" ><title>ODE rkstep23: using 'standard' embedded lower order Error estimate</title>
+	<g id="gnuplot_plot_2" ><title>ODE rkstep23: Error estimate using embedded low order</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(583.7,466.5)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >ODE rkstep23: using 'standard' embedded lower order Error estimate</tspan></text>
+	<g transform="translate(514.0,466.5)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+		<text><tspan font-family="Arial" >ODE rkstep23: Error estimate using embedded low order</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0, 158, 115)'  d='M592.0,462.0 L599.9,462.0 M71.9,54.1 L72.1,54.1 L72.5,54.1 L72.9,54.2 L73.4,54.2 L73.8,54.3
+	<path stroke='rgb(  0, 158, 115)'  d='M522.3,462.0 L564.5,462.0 M71.9,54.1 L72.1,54.1 L72.5,54.1 L72.9,54.2 L73.4,54.2 L73.8,54.3
 		L74.3,54.5 L74.8,54.6 L75.3,54.9 L75.8,55.1 L76.3,55.3 L76.8,55.6 L77.3,56.0 L77.8,56.3
 		L78.3,56.7 L78.8,57.1 L79.3,57.6 L79.8,58.1 L80.2,58.6 L80.7,59.1 L81.2,59.7 L81.7,60.3
 		L82.2,60.9 L82.7,61.6 L83.2,62.3 L83.7,63.0 L84.2,63.7 L84.7,64.5 L85.2,65.3 L85.7,66.2
