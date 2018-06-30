@@ -3,23 +3,11 @@ LDLIBS += $$(gsl-config --libs)
 obj =  ann.o minimization.o qr.o minimization.h
 datafile = plot_data.txt
 
-.PHONEY: test all clean
+.PHONEY: all clean
 
-all: out.txt plot.svg plot2.svg
+all: out.txt plot.svg
 	cat $<
-	touch plot.svg plot2.svg
-
-plot2.svg: $(datafile)
-	@echo ' \
-        set term $(subst .,,$(suffix $@)) background rgb "white"; \
-        set out "$@"; \
-        set grid; \
-        set xlabel "x"; \
-        set ylabel "y"; \
-        set title "ANN interpolation"; \
-        splot "$<" index 2 with points title " cos(x+y)*sin(2*(x+y)) data points" \
-	,"$<" index 3  using 1:2:3 with points pointtype 6 title "ANN interpolation" ; \
-        ' | gnuplot
+	touch plot.svg
 
 
 plot.svg: $(datafile)
@@ -42,7 +30,3 @@ main: $(obj)
 
 clean:
 	$(RM) *.o main *.txt *.svg *.log
-
-test:
-	@echo $(LDLIBS)
-	@echo $(CFLAGS)

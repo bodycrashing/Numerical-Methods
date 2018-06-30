@@ -1,5 +1,0 @@
-One dimensional ANN interpolation of cos(5x)sin(2x) from -2 to 2 can be seen in plot.svg. Interpolation is made with acitivation function x*exp(-x*x),  10 hidden neurons and eps = 1e-06.
-
-_____TASK 2_____
-
-Two dimensional ANN interpolation of cos(x+y)  function can be seen in plot.svg. Interpolation is made with acitivation function x*exp(-x*x), 10 hidden neurons and eps = 1e-06. The interpolation doesn't seem to find the correct fucktion but more like the overall trend. With more calculating power, better results could possibly be achieved.

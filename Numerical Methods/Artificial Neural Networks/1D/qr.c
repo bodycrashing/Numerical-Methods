@@ -1,4 +1,4 @@
-#include"arti.h"
+#include"ann.h"
 
 void vector_print(const gsl_vector* v){
 	for(int j=0;j<v->size;j++){

@@ -1,19 +1,13 @@
-#include<stdio.h>
-#include<math.h>
-#include <gsl/gsl_vector.h>
-#include <gsl/gsl_matrix.h>
-#include <gsl/gsl_multimin.h>
 #include"ann.h"
 
-double train_func(double x, double y){return y*x*exp(-x*x)*exp(-y*y);}
-//double train_func(double x){return x*x*exp(-x*x);}
-double func_to_interpolate(double x,double y){return cos(5*x-1)*exp(-x*x)*exp(-y*y);}
+double act_func(double x, double y){return y*x*exp(-x*x)*exp(-y*y);}
+double interpolate_func(double x,double y){return cos(5*x-1)*exp(-x*x)*exp(-y*y);}
 //double func_to_interpolate(double x,double y){return x*x + y*y;}
 int main(){
 
 	int num_neurons=20;
 
-	ann* nw=ann_alloc(num_neurons,train_func);
+	ann* nw=ann_alloc(num_neurons,act_func);
 	double a=-1,b=1;
 	int num_x=20;
 	gsl_vector* vx=gsl_vector_alloc(num_x*num_x);
@@ -23,7 +17,7 @@ int main(){
 		for (int j = 0; j < num_x; j++) {
 			double x=a+(b-a)*i/(num_x-1);
 			double y=a+(b-a)*j/(num_x-1);
-			double f=func_to_interpolate(x,y);
+			double f=interpolate_func(x,y);
 			gsl_vector_set(vx,i*num_x+j,x);
 			gsl_vector_set(vy,i*num_x+j,y);
 			gsl_vector_set(vf,i*num_x+j,f);

@@ -1,4 +1,9 @@
 #include<gsl/gsl_vector.h>
+#include<stdio.h>
+#include<math.h>
+#include <gsl/gsl_vector.h>
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_multimin.h>
 #ifndef HAVE_NEURONS
 #define HAVE_NEURONS
 

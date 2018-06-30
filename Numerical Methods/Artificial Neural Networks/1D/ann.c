@@ -1,4 +1,4 @@
-#include"arti.h"
+#include"ann.h"
 #include "minimization.h"
 
 ann* ann_alloc(int n, double(*act_fun)(double)){
