@@ -8,18 +8,6 @@
 #include "jacobi.h"
 
 
-#define FMT "%7.3f"
-void printv(gsl_vector *A){
-	for(int i=0;i<A->size;i++){
-		printf(FMT,gsl_vector_get(A,i));
-		printf("\n");
-	}
-}
-
-
-
-
-
 void lsfit(int m, double f(int i,double x),
 	gsl_vector* x, gsl_vector* y, gsl_vector* dy,
 	gsl_vector* c, gsl_matrix* S)
@@ -32,8 +20,6 @@ gsl_matrix *R    = gsl_matrix_alloc(m,m);
 gsl_matrix *invR = gsl_matrix_alloc(m,m);
 gsl_matrix *I    = gsl_matrix_alloc(m,m);
 
-
-
 for(int i=0;i<n;i++){
 	double xi  = gsl_vector_get(x,i);
 	double yi  = gsl_vector_get(y,i);
@@ -45,7 +31,6 @@ for(int i=0;i<n;i++){
 qr_gs_decomp(A,R);
 qr_gs_solve(A,R,b,c);
 
-
 gsl_matrix_set_identity(I);
 qr_gs_inverse(I,R,invR);
 gsl_blas_dgemm(CblasNoTrans,CblasTrans,1,invR,invR,0,S);
@@ -56,6 +41,7 @@ gsl_matrix_free(R);
 gsl_matrix_free(invR);
 gsl_matrix_free(I);
 }
+
 
 gsl_matrix* singular_val_decomp(gsl_matrix* A, gsl_matrix* V, gsl_matrix* S){
 	int n = (*A).size1; //A is tall matrix i.e. n>m.
