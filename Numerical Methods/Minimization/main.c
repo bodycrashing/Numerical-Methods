@@ -141,7 +141,7 @@ int main(int argc, char const *argv[]) {
 	for(int i=0;i<N;i++){
 	fprintf(data,"%lg\t%lg\t%lg\n",t[i],y[i],e[i]);
 	}
-	fprintf(data,"\n");
+	fprintf(data,"\n\n");
 
 	// Find constants of fit using Quasi_Newton minimization
 	dx=1e-6;
