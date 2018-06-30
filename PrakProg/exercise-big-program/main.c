@@ -4,7 +4,7 @@ int main(void){
 
 	int calls; // number of calls of ode_ln
 	printf("x\ty\tln(x)\tcalls\n");
-  double a=1.0, b=10, dx = 1;
+  double a=1.0, b=10, dx = 0.1;
 	for(double x=a; x<b; x+=dx){
 		calls = 0;
 		double y = log_int(x, &calls);

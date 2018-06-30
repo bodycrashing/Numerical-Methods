@@ -57,13 +57,18 @@ Finally the acquired results must be compared to a with $\ln(x)$ function from t
  		if(x >= 2){return log(2.0) + log_int(x/2.0, calls);}
  \end{lstlisting}
 This results in a recursion in which the function continuously calls itself until the condition $1\leq x < 2$ is realized at which point the GSL integration routine is carried out.
-The program is run from the c-file main.c by calling ??? in a ??? loop. Specifically the function is evaluated from $0.1$ to $10$ using a step size of $\Delta x = 0.1$. 
+The program is run from the c-file main.c by calling log\_int in a for loop. Specifically the function is evaluated from $0.1$ to $10$ using a step size of $\Delta x = 0.1$. 
 
 
-\chapter{Results}
-
-
-
+\chapter{Results and Conclusion}
+Figure shows a plot of the data points contained from the datafile \textit{out.txt} created when the script is run.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[]{figure.pdf}
+	\caption{Result from running the main.c script. The figure shows the \cref{eq:ln_int} from $x=[1,10]$ and overlayed of the $\ln(x)$ from the math.h library}
+	\label{fig.log}
+\end{figure}
+It is evident from \cref{fig.log} that the routine produces sensible values of $\ln(x)$. Hence we can conclude that \cref{eq:ln_int}, with the required reduction of the integration, is meaningful and computationally efficient way to calculate $\ln(x)$ 
 
 
 
