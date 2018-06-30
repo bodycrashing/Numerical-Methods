@@ -1,0 +1,10 @@
+set term svg background rgb "white"
+set out "orbit3.svg"
+set xlabel "phi"
+set ylabel "u"
+set grid
+set size square
+plot "out3.txt" \
+	using (1/$2)*sin($1):(1/$2)*cos($1) \
+	with lines \
+	notitle

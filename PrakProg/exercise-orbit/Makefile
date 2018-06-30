@@ -5,28 +5,31 @@ PLOTTER = gnuplot
 
 .PHONEY:default
 
-default:logistic.svg out.txt out1.txt out2.txt
+default:logistic.svg out1.txt out2.txt out3.txt plot1.svg plot2.svg plot3.svg
 
-logistic.svg:logistic.gpi main
+logistic.svg:logistic.gpi logistic.out.txt
 	gnuplot $<
 
-out.txt: main Makefile
-	./$< 0 0 > $@
+logistic.out.txt: main
+	./$< > $@
+
 
 out1.txt: main Makefile
-	./$< 0 -0.4 > $@
+	./$< 0 0 > $@
 
 out2.txt: main Makefile
+	./$< 0 -0.4 > $@
+
+out3.txt: main Makefile
 	./$< 0.01 -0.4 > $@
 
-
-orbit1.svg: orbit1.gpi orbit1.txt
+plot1.svg: plot1.gpi out1.txt
 	gnuplot $<
 
-orbit2.svg: orbit2.gpi orbit2.txt
+plot2.svg: plot2.gpi out2.txt
 	gnuplot $<
 
-orbit3.svg: orbit3.gpi orbit3.txt
+plot3.svg: plot3.gpi out3.txt
 	gnuplot $<
 
 

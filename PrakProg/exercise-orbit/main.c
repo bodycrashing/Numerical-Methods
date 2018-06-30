@@ -28,11 +28,11 @@ int orbit(double x, const double y[], double dydx[], void* params){
 
 int main(int argc,char** argv){
 
-	FILE* logistic_stream = fopen("logistic.out.txt","w+");
+	//FILE* logistic_stream = fopen("logistic.out.txt","w+");
   double epsabs = 1e-8;
 	double epsrel = 1e-8;
   double hstart = 1e-3;
-
+  
   gsl_odeiv2_system logistic_sys = {logistic_diff, NULL, 1, NULL};
   gsl_odeiv2_driver *logistic_driver = gsl_odeiv2_driver_alloc_y_new(&logistic_sys, gsl_odeiv2_step_rkf45, hstart, epsabs, epsrel);
 
@@ -47,7 +47,7 @@ int main(int argc,char** argv){
           printf ("error: logistic driver returned %d\n", logistic_result);
           break;
         }
-    fprintf(logistic_stream,"%lg\t%lg\t%lg\n", i, y1[0],logistic(i));
+    printf("%lg\t%lg\t%lg\n", i, y1[0],logistic(i));
     }
 
 
